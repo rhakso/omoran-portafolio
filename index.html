@@ -15,6 +15,16 @@
 
 <link href="assets/dist/css/custom.css" rel="stylesheet">
 <style>
+  html::-webkit-scrollbar {
+  width:16px;
+  height:16px;
+}
+html::-webkit-scrollbar-thumb {
+  background:#5C636A;
+  border-radius:16px;
+    box-shadow:inset 2px 2px 2px hsla(0,5%,100%,.10),inset -2px -2px 2px rgba(0,0,0,.25);
+}
+html::-webkit-scrollbar-track{background:linear-gradient(90deg,#2a3744,#2a3744 1px,#161D24 0,#161D24)}
   .dark-theme .card {
       background: #161d24 !important;
       color: #fff;
@@ -120,7 +130,7 @@ button.accordion-button {
       <div class="row py-lg-5">
         <div class="col-lg-6 col-md-8 mx-auto text-white">
           
-          <img id="foto" src="assets/img/foto.jpg" />
+          <img id="foto" src="assets/img/oscar.jpg" />
           <h2 class="fw-light">Oscar Moran</h2>
           <h1 class="fw-light">Web Developer</h1>
           
