@@ -141,9 +141,7 @@ a.btn-email:hover, a.btn-email:hover:before {
   }
   .card-body small.text-muted {
       padding-left: 10px;
-  }
-  .text-muted{
-    color:#9eaab5!important;
+      color:#9eaab5 !important;
   }
   /*
   .card.shadow-sm {
