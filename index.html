@@ -37,7 +37,7 @@ html::-webkit-scrollbar-track{background:linear-gradient(90deg,#2a3744,#2a3744 1
   /*.btn-leer-mas:hover {
     background: #fff;
   }*/
-  .btn-leer-mas {
+  /*.btn-leer-mas {
       display: inline-block;
       border-radius: 3px;
       padding: 0 5px;
@@ -47,6 +47,9 @@ html::-webkit-scrollbar-track{background:linear-gradient(90deg,#2a3744,#2a3744 1
     margin-bottom: 0px;
     background: #ffffff1a;
     color: #808b95!important;
+  }*/
+  .btn-leer-mas.accordion-button:not(.collapsed){
+    color:#fff;
   }
   .dark-theme p.lead {
     color: #c3c3c4 !important;
@@ -82,17 +85,18 @@ html::-webkit-scrollbar-track{background:linear-gradient(90deg,#2a3744,#2a3744 1
     --bs-gutter-x: 0.5rem;
     --bs-gutter-y: 0.5rem;
   }
-  button.accordion-button.collapsed {
+  button.btn-leer-mas.accordion-button.collapsed {
     /* display: inline-block; */
     border-radius: 3px;
     /* padding: 0 5px; */
-
-    color: #fff;
     text-decoration: none;
     /* margin-bottom: 0px; */
-    background: #ffffff1a;
-    color: #808b95!important;
-}
+    /*background: #ffffff1a;*/
+    background-color: #161d24 !important;
+    /*color: #808b95!important;*/
+    color:#ffffff;
+    border: 1.5px solid #6c757d;
+  }
 .accordion-item,.accordion-item button {
     background: transparent;
 }
@@ -299,14 +303,14 @@ style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-w
                           </ul>
                         </div>
                       </div>
-                      <h2 class="accordion-header" id="flush-headingPhotoCafe">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapsePhotoCafe" aria-expanded="false" aria-controls="flush-collapsePhotoCafe">
+                      <div class="accordion-header" id="flush-headingPhotoCafe">
+                        <button class="btn-leer-mas accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapsePhotoCafe" aria-expanded="false" aria-controls="flush-collapsePhotoCafe">
                           Leer más 
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-down" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"></path>
                           </svg>
                         </button>
-                      </h2>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -347,14 +351,14 @@ style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-w
                           </ul>
                         </div>
                       </div>
-                      <h2 class="accordion-header" id="flush-headingFramedMedia">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFramedMedia" aria-expanded="false" aria-controls="flush-collapseFramedMedia">
+                      <div class="accordion-header" id="flush-headingFramedMedia">
+                        <button class="btn-leer-mas accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFramedMedia" aria-expanded="false" aria-controls="flush-collapseFramedMedia">
                           Leer más 
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-down" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"></path>
                           </svg>
                         </button>
-                      </h2>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -398,14 +402,14 @@ style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-w
                           </ul>
                         </div>
                       </div>
-                      <h2 class="accordion-header" id="flush-headingTuMenuSV">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTuMenuSV" aria-expanded="false" aria-controls="flush-collapseTuMenuSV">
+                      <div class="accordion-header" id="flush-headingTuMenuSV">
+                        <button class="btn-leer-mas accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTuMenuSV" aria-expanded="false" aria-controls="flush-collapseTuMenuSV">
                           Leer más 
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-down" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"></path>
                           </svg>
                         </button>
-                      </h2>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -447,14 +451,14 @@ style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-w
                           </ul>
                         </div>
                       </div>
-                      <h2 class="accordion-header" id="flush-headingICCuscatlan">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseICCuscatlan" aria-expanded="false" aria-controls="flush-collapseICCuscatlan">
+                      <div class="accordion-header" id="flush-headingICCuscatlan">
+                        <button class="btn-leer-mas accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseICCuscatlan" aria-expanded="false" aria-controls="flush-collapseICCuscatlan">
                           Leer más 
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-down" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"></path>
                           </svg>
                         </button>
-                      </h2>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -495,14 +499,14 @@ style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-w
                           </ul>
                         </div>
                       </div>
-                      <h2 class="accordion-header" id="flush-headingFirenze">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFirenze" aria-expanded="false" aria-controls="flush-collapseFirenze">
+                      <div class="accordion-header" id="flush-headingFirenze">
+                        <button class="btn-leer-mas accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFirenze" aria-expanded="false" aria-controls="flush-collapseFirenze">
                           Leer más 
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-down" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"></path>
                           </svg>
                         </button>
-                      </h2>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -541,14 +545,14 @@ style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-w
                           </ul>
                         </div>
                       </div>
-                      <h2 class="accordion-header" id="flush-headingFoody">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFoody" aria-expanded="false" aria-controls="flush-collapseFoody">
+                      <div class="accordion-header" id="flush-headingFoody">
+                        <button class="btn-leer-mas accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFoody" aria-expanded="false" aria-controls="flush-collapseFoody">
                           Leer más 
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-down" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"></path>
                           </svg>
                         </button>
-                      </h2>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -590,14 +594,14 @@ style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-w
                           </ul>
                         </div>
                       </div>
-                      <h2 class="accordion-header" id="flush-headingBaindete">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseBaindete" aria-expanded="false" aria-controls="flush-collapseBaindete">
+                      <div class="accordion-header" id="flush-headingBaindete">
+                        <button class="btn-leer-mas accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseBaindete" aria-expanded="false" aria-controls="flush-collapseBaindete">
                           Leer más 
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-down" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"></path>
                           </svg>
                         </button>
-                      </h2>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -638,14 +642,14 @@ style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-w
                           </ul>
                         </div>
                       </div>
-                      <h2 class="accordion-header" id="flush-headingBiozid">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseBiozid" aria-expanded="false" aria-controls="flush-collapseBiozid">
+                      <div class="accordion-header" id="flush-headingBiozid">
+                        <button class="btn-leer-mas accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseBiozid" aria-expanded="false" aria-controls="flush-collapseBiozid">
                           Leer más 
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-down" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"></path>
                           </svg>
                         </button>
-                      </h2>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -685,14 +689,14 @@ style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-w
                           </ul>
                         </div>
                       </div>
-                      <h2 class="accordion-header" id="flush-headingOplisa">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOplisa" aria-expanded="false" aria-controls="flush-collapseOplisa">
+                      <div class="accordion-header" id="flush-headingOplisa">
+                        <button class="btn-leer-mas accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOplisa" aria-expanded="false" aria-controls="flush-collapseOplisa">
                           Leer más 
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-down" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"></path>
                           </svg>
                         </button>
-                      </h2>
+                      </div>
                     </div>
                   </div>
                 </div>
