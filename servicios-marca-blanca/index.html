@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Servicios de desarrollo web marca blanca para agencias y diseñadores.">
+    <meta name="author" content="Oscar Moran">
+    <meta name="robots" content="noindex, nofollow"> <!-- NO INDEXAR -->
+    <title>Servicios Marca Blanca - Oscar Moran</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="../assets/dist/css/custom.css" rel="stylesheet">
+    <style>
+        html::-webkit-scrollbar {
+            width: 16px;
+            height: 16px;
+        }
+
+        html::-webkit-scrollbar-thumb {
+            background: #5C636A;
+            border-radius: 16px;
+            box-shadow: inset 2px 2px 2px hsla(0, 5%, 100%, .10), inset -2px -2px 2px rgba(0, 0, 0, .25);
+        }
+
+        html::-webkit-scrollbar-track {
+            background: linear-gradient(90deg, #2a3744, #2a3744 1px, #161D24 0, #161D24)
+        }
+
+        .dark-theme .card {
+            background: #161d24 !important;
+            color: #fff;
+        }
+
+        .dark-theme .card-bottom {
+            padding-top: 20px;
+            border-top: 1px solid #212a34;
+            margin-top: 19px;
+        }
+
+        .dark-theme p.lead {
+            color: #c3c3c4 !important;
+        }
+
+        body.light-theme {
+            background: #f9f9f9;
+        }
+
+        .body.bg-dark {
+            --bs-bg-opacity: 1;
+            background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;
+        }
+
+        .row {
+            --bs-gutter-x: 0.5rem;
+            --bs-gutter-y: 0.5rem;
+        }
+
+        @media (min-width: 1400px) {
+
+            .container,
+            .container-lg,
+            .container-md,
+            .container-sm,
+            .container-xl,
+            .container-xxl {
+                max-width: 1200px;
+            }
+        }
+
+        /* Specific styles for White Label page */
+        .service-category-title {
+            color: #fff;
+            border-bottom: 2px solid #2a3744;
+            padding-bottom: 10px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        .service-item {
+            background: #161d24;
+            border: 1px solid #2a3744;
+            border-radius: 8px;
+            padding: 20px;
+            height: 100%;
+            transition: transform 0.2s;
+        }
+
+        .service-item:hover {
+            transform: translateY(-5px);
+            border-color: #0dcaf0;
+            /* Cyan for tech/agency feel */
+        }
+
+        .service-item h4 {
+            color: #fff;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .service-item h4::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: #0dcaf0;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .service-item ul {
+            padding-left: 20px;
+            color: #c3c3c4;
+            margin-bottom: 0;
+        }
+
+        .service-item ul li {
+            margin-bottom: 5px;
+        }
+
+        .intro-text {
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+            color: #c3c3c4;
+        }
+
+        .badge-tech {
+            background-color: #2a3744;
+            color: #0dcaf0;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body class="bg-dark dark-theme">
+
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+
+        <header class="container mb-5 mt-3">
+            <div class="d-flex justify-content-between align-items-center">
+                <a href="../index.html" class="btn btn-outline-secondary text-white border-secondary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-arrow-left" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+                    </svg>
+                    Volver al Inicio
+                </a>
+                <span class="badge bg-info text-dark">Servicios Marca Blanca</span>
+            </div>
+        </header>
+
+        <main>
+
+            <section class="text-center container">
+                <div class="row py-lg-3">
+                    <div class="col-lg-8 col-md-10 mx-auto text-white">
+                        <h1 class="fw-light mb-3">Servicios Marca Blanca</h1>
+                        <p class="lead intro-text">
+                            Soluciones técnicas completas para Agencias, Diseñadores y Desarrolladores.
+                            <strong>Tu equipo técnico invisible.</strong>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="container pb-5">
+
+                <!-- Stack Tecnológico -->
+                <h3 class="service-category-title">Stack Tecnológico</h3>
+                <div class="row row-cols-1 row-cols-md-2 g-4">
+                    <div class="col">
+                        <div class="service-item">
+                            <h4>WordPress Ecosystem</h4>
+                            <div class="mt-3">
+                                <span class="badge-tech">WordPress</span>
+                                <span class="badge-tech">Elementor Pro</span>
+                                <span class="badge-tech">Gutenberg</span>
+                                <span class="badge-tech">WpBakery</span>
+                                <span class="badge-tech">Divi</span>
+                                <span class="badge-tech">Bricks Builder</span>
+
+                                <span class="badge-tech">WooCommerce</span>
+                                <span class="badge-tech">Custom Post Types</span>
+                                <span class="badge-tech">ACF</span>
+                                <span class="badge-tech">JetEngine</span>
+                                <span class="badge-tech">JetFormBuilder</span>
+                                <span class="badge-tech">JetSmartFilters</span>
+                            </div>
+                            <p class="text-white-50 mt-3 small">Dominio total de hooks, child themes y personalización
+                                avanzada.</p>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="service-item">
+                            <h4>Otras Plataformas & Código</h4>
+                            <div class="mt-3">
+                                <span class="badge-tech">Webflow</span>
+                                <span class="badge-tech">Squarespace</span>
+                                <span class="badge-tech">Bootstrap 5</span>
+                                <span class="badge-tech">HTML5 / CSS3</span>
+                                <span class="badge-tech">JavaScript</span>
+                                <span class="badge-tech">GoDaddy Sites</span>
+                            </div>
+                            <p class="text-white-50 mt-3 small">Adaptabilidad a herramientas No-Code y desarrollo puro.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-cols-1 mt-4">
+                    <div class="col">
+                        <div class="service-item">
+                            <h4>Tipos de Desarrollo</h4>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <ul>
+                                        <li>Landing Pages & One Page</li>
+                                        <li>Sitios Informativos</li>
+                                        <li>Catálogos Online</li>
+                                        <li>Portafolios</li>
+                                        <li>Tiendas Online</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-4">
+                                    <ul>
+                                        <li>Academias Online</li>
+                                        <li>Directorios (Bolsas de trajajo, Inmobiliarias, Negocios, etc.)</li>
+                                        <li>Blogs Corporativos</li>
+                                        <li>Buscadores de Sucursales</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-4">
+                                    <ul>
+                                        <li>Mapas interactivos</li>
+                                        <li>Migraciones entre plataformas</li>
+                                        <li>Limpieza de webs infectadas</li>
+                                        <li>Mantenimiento Web</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- E-commerce -->
+                <!-- Design & Workflow -->
+                <h3 class="service-category-title">Diseño y Flujo de Trabajo</h3>
+                <div class="row row-cols-1 row-cols-md-2 g-4">
+                    <div class="col">
+                        <div class="service-item">
+                            <h4>De Diseño a Código</h4>
+                            <p class="text-white-50 small">Fidelidad pixel-perfect desde tus herramientas de diseño
+                                favoritas.</p>
+                            <ul>
+                                <li>Figma a Web</li>
+                                <li>Adobe Photoshop (PSD) a Web</li>
+                                <li>Adobe Illustrator (AI) a Web</li>
+                                <li>Desarrollo basado en Webs de Referencia</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="service-item">
+                            <h4>Recursos y Plantillas</h4>
+                            <p class="text-white-50 small">Implementación ágil usando recursos profesionales.</p>
+                            <ul>
+                                <li><strong>Envato Elementor Template Kits</strong></li>
+                                <li>Implementación de Temas Premium (ThemeForest)</li>
+                                <li>Adaptación de Diseños Existentes</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- E-commerce -->
+                <h3 class="service-category-title">E-commerce Avanzado (WooCommerce)</h3>
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <div class="col">
+                        <div class="service-item">
+                            <h4>Tiendas Completas</h4>
+                            <ul>
+                                <li>Megamenús y Categorías complejas</li>
+                                <li>Filtros avanzados (Facetas)</li>
+                                <li>Listas de deseos (Wishlist)</li>
+                                <li>Vista rápida de producto</li>
+                                <li>Sistema de Puntos y Gift Cards</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="service-item">
+                            <h4>Gestión de Pagos y Envíos</h4>
+                            <ul>
+                                <li>Pasarelas locales y PayPal</li>
+                                <li>Configuración de zonas de envío</li>
+                                <li>Productos Variables y Compuestos</li>
+                                <li>Páginas de Carrito y Mi Cuenta personalizadas</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="service-item">
+                            <h4>Catálogos y Menús</h4>
+                            <ul>
+                                <li>Modo Catálogo (Sin compra)</li>
+                                <li>Botón "Consultar por WhatsApp"</li>
+                                <li>Menús Online (Vista rápida)</li>
+                                <li>Custom Post Types para catálogos sin Woo</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Specialized Systems -->
+                <h3 class="service-category-title">Sistemas Especializados</h3>
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <div class="col">
+                        <div class="service-item">
+                            <h4>Academias y Membresías</h4>
+                            <ul>
+                                <li>Tutor LMS + WooCommerce</li>
+                                <li>Venta de Cursos Online</li>
+                                <li>Contenido Restringido por Rol</li>
+                                <li>Dashboards Personalizados (JetEngine)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="service-item">
+                            <h4>Directorios y Listings</h4>
+                            <ul>
+                                <li>Inmobiliarias y Bienes Raíces</li>
+                                <li>Directorios de Negocios/Profesionales</li>
+                                <li>Suscripciones y Planes de pago</li>
+                                <li>Anuncios Clasificados</li>
+                                <li>Bolsas de Trabajo</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="service-item">
+                            <h4>Multilenguaje</h4>
+                            <ul>
+                                <li>WPML (Implementación avanzada)</li>
+                                <li>Polylang</li>
+                                <li>GTranslate (Traducción automática)</li>
+                                <li>Sitios espejo por idioma/país</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technical & Optimization -->
+                <h3 class="service-category-title">Técnico, SEO y Herramientas</h3>
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <div class="col">
+                        <div class="service-item">
+                            <h4>SEO y WPO</h4>
+                            <ul>
+                                <li>SEO Onpage y Técnico</li>
+                                <li>Schema Markup y Open Graph</li>
+                                <li>Google Search Console</li>
+                                <li>Optimización de Velocidad (Minificación, WebP)</li>
+                                <li>Core Web Vitals</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="service-item">
+                            <h4>Integraciones</h4>
+                            <ul>
+                                <li>Email Marketing (Brevo, Sendingblue, Apollo)</li>
+                                <li>CRM y APIs</li>
+                                <li>Google Analytics 4</li>
+                                <li>Chat en vivo (Tawk.to)</li>
+                                <li>Calculadoras de cotización</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="service-item">
+                            <h4>Infraestructura</h4>
+                            <ul>
+                                <li>Administración de Hosting (Cpanel)</li>
+                                <li>Configuración de Correos Corporativos</li>
+                                <li>SMTP y API de Gmail</li>
+                                <li>Gestión DNS (Cloudflare, etc.)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </main>
+
+        <footer class="text-muted py-5 text-center">
+            <div class="container">
+                <p class="mb-1">© Oscar Moran</p>
+                <div class="mt-3">
+                    <a href="https://wa.me/50370254004?text=Hola,%20soy%20de%20una%20agencia%20y%20me%20interesa%20colaborar"
+                        class="btn btn-info btn-sm text-dark">
+                        <b>Agendar Reunión / Chat</b>
+                    </a>
+                    <a href="mailto:oscarmoran.trejo@gmail.com" class="btn btn-light btn-sm ms-2">
+                        Enviar Propuesta
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
