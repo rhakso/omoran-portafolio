@@ -1,0 +1,1300 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+        content="Reporte de estado, estrategia digital y propuesta de mantenimiento para Espeled.com">
+    <meta name="author" content="Oscar Moran">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Reporte Estratégico — Espeled | Oscar Moran</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #0d1117;
+            --bg-card: #161d24;
+            --border: #2a3744;
+            --accent: #0dcaf0;
+            --accent2: #198754;
+            --text-secondary: #c3c3c4;
+            --warning: #ffc107;
+            --danger: #dc3545
+        }
+
+        * {
+            font-family: 'Inter', sans-serif
+        }
+
+        body {
+            background: var(--bg-body);
+            color: #fff
+        }
+
+        html::-webkit-scrollbar {
+            width: 14px
+        }
+
+        html::-webkit-scrollbar-thumb {
+            background: #5C636A;
+            border-radius: 14px;
+            box-shadow: inset 2px 2px 2px hsla(0, 5%, 100%, .1), inset -2px -2px 2px rgba(0, 0, 0, .25)
+        }
+
+        html::-webkit-scrollbar-track {
+            background: linear-gradient(90deg, var(--border), var(--border) 1px, var(--bg-body) 0, var(--bg-body))
+        }
+
+        .section-title {
+            color: #fff;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 12px;
+            margin-top: 50px;
+            margin-bottom: 24px;
+            font-weight: 300
+        }
+
+        .section-title .badge {
+            font-size: .6em;
+            vertical-align: middle;
+            margin-left: 8px
+        }
+
+        .card-dark {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 24px;
+            margin-bottom: 16px;
+            transition: transform .2s, border-color .2s
+        }
+
+        .card-dark:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent)
+        }
+
+        .card-dark h4 {
+            font-size: 1.1rem;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            font-weight: 600
+        }
+
+        .card-dark h4::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            margin-right: 10px;
+            flex-shrink: 0
+        }
+
+        .card-dark ul {
+            padding-left: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 0
+        }
+
+        .card-dark ul li {
+            margin-bottom: 6px;
+            font-size: .92rem
+        }
+
+        .badge-tech {
+            background: var(--border);
+            color: var(--accent);
+            padding: 5px 12px;
+            border-radius: 5px;
+            font-size: .78rem;
+            margin: 3px;
+            display: inline-block
+        }
+
+        .badge-phase {
+            background: var(--accent);
+            color: #000;
+            font-weight: 600
+        }
+
+        .text-muted-custom {
+            color: var(--text-secondary) !important
+        }
+
+        .alert-dark-custom {
+            background: rgba(220, 53, 69, .1);
+            border: 1px solid rgba(220, 53, 69, .3);
+            border-radius: 8px;
+            padding: 16px;
+            color: #f8d7da
+        }
+
+        .alert-success-custom {
+            background: rgba(25, 135, 84, .1);
+            border: 1px solid rgba(25, 135, 84, .3);
+            border-radius: 8px;
+            padding: 16px;
+            color: #badbcc
+        }
+
+        .alert-info-custom {
+            background: rgba(13, 202, 240, .08);
+            border: 1px solid rgba(13, 202, 240, .2);
+            border-radius: 8px;
+            padding: 16px;
+            color: #cff4fc
+        }
+
+        .alert-warning-custom {
+            background: rgba(255, 193, 7, .08);
+            border: 1px solid rgba(255, 193, 7, .2);
+            border-radius: 8px;
+            padding: 16px;
+            color: #fff3cd
+        }
+
+        .img-audit {
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            width: 100%;
+            height: auto;
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: transform .2s
+        }
+
+        .img-audit:hover {
+            transform: scale(1.02)
+        }
+
+        .table-dark-custom {
+            --bs-table-bg: var(--bg-card);
+            --bs-table-border-color: var(--border);
+            --bs-table-color: #fff;
+            font-size: .88rem
+        }
+
+        .table-dark-custom thead th {
+            background: var(--border);
+            color: var(--accent);
+            font-weight: 600;
+            border: none
+        }
+
+        .nav-toc {
+            position: sticky;
+            top: 20px
+        }
+
+        .nav-toc .nav-link {
+            color: var(--text-secondary);
+            padding: 6px 12px;
+            font-size: .85rem;
+            border-left: 2px solid transparent;
+            border-radius: 0
+        }
+
+        .nav-toc .nav-link:hover,
+        .nav-toc .nav-link.active {
+            color: var(--accent);
+            border-left-color: var(--accent);
+            background: rgba(13, 202, 240, .05)
+        }
+
+        .hero-section {
+            padding: 60px 0 40px;
+            text-align: center
+        }
+
+        .hero-section h1 {
+            font-weight: 300;
+            font-size: 2.2rem
+        }
+
+        .hero-section .lead {
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto
+        }
+
+        .phase-number {
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: #000;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: .9rem;
+            margin-right: 10px;
+            flex-shrink: 0
+        }
+
+        .timeline-item {
+            border-left: 2px solid var(--border);
+            padding-left: 24px;
+            padding-bottom: 28px;
+            position: relative
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 4px;
+            width: 10px;
+            height: 10px;
+            background: var(--accent);
+            border-radius: 50%
+        }
+
+        .timeline-item:last-child {
+            border-left-color: transparent;
+            padding-bottom: 0
+        }
+
+        .cost-highlight {
+            background: linear-gradient(135deg, rgba(13, 202, 240, .1), rgba(25, 135, 84, .1));
+            border: 1px solid var(--accent);
+            border-radius: 10px;
+            padding: 24px;
+            text-align: center
+        }
+
+        .cost-highlight .amount {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent)
+        }
+
+        .blockquote-dark {
+            border-left: 4px solid var(--accent);
+            padding: 16px 20px;
+            background: rgba(13, 202, 240, .05);
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: var(--text-secondary)
+        }
+
+        @media(max-width:991px) {
+            .nav-toc-wrapper {
+                display: none
+            }
+        }
+
+        @media(min-width:1400px) {
+
+            .container,
+            .container-lg,
+            .container-md,
+            .container-sm,
+            .container-xl,
+            .container-xxl {
+                max-width: 1200px
+            }
+        }
+
+        .row {
+            --bs-gutter-x: .5rem;
+            --bs-gutter-y: .5rem
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+
+        <!-- HEADER -->
+        <header class="container mb-4 mt-3">
+            <div class="d-flex justify-content-between align-items-center">
+                <a href="https://oscarmorantrejo.com" class="btn btn-outline-secondary text-white border-secondary"
+                    target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-arrow-left me-1" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+                    </svg>
+                    Oscar Moran
+                </a>
+                <span class="badge bg-info text-dark">Reporte Estratégico — Abril 2026</span>
+            </div>
+        </header>
+
+        <main>
+            <div class="container">
+                <div class="row">
+
+                    <!-- SIDEBAR TOC (desktop) -->
+                    <div class="col-lg-3 nav-toc-wrapper">
+                        <nav class="nav-toc">
+                            <nav class="nav flex-column">
+                                <a class="nav-link" href="#mantenimiento">📋 Mantenimiento</a>
+                                <a class="nav-link" href="#auditoria">🔍 Auditoría Visual</a>
+                                <a class="nav-link" href="#fase1">⚡ Fase 1: Quick Wins</a>
+                                <a class="nav-link" href="#fase2">🏗️ Fase 2: Landings</a>
+                                <a class="nav-link" href="#heatmaps">🔥 Heatmaps</a>
+                                <a class="nav-link" href="#fase3">🧲 Fase 3: Lead Magnet</a>
+                                <a class="nav-link" href="#resenas">⭐ Reseñas Google</a>
+                                <a class="nav-link" href="#blog">📝 Blog SEO</a>
+                                <a class="nav-link" href="#backlinks">🔗 Backlinks</a>
+                                <a class="nav-link" href="#costos">📊 Cronograma y Costos</a>
+                            </nav>
+                        </nav>
+                    </div>
+
+                    <!-- MAIN CONTENT -->
+                    <div class="col-lg-9">
+
+                        <!-- HERO -->
+                        <section class="hero-section">
+                            <span class="badge bg-info text-dark mb-3">Documento Confidencial</span>
+                            <h1>Reporte y Estrategia Digital</h1>
+                            <h2 class="fw-light text-info" style="font-size:1.6rem">Espeled.com</h2>
+                            <p class="lead mt-3 mb-1">Espejos LED de Lujo — Guadalajara, Jalisco</p>
+                            <p class="text-white mt-0 mb-3" style="font-size: 1.1rem;">Presentado a: <strong>Joel Rodríguez</strong></p>
+                            <p class="text-muted-custom small">Preparado por Oscar Moran · Abril 2026</p>
+                        </section>
+
+                        <!-- ========== 1. MANTENIMIENTO ========== -->
+                        <section id="mantenimiento">
+                            <h3 class="section-title">📋 Estado de Mantenimiento y Propuesta <span
+                                    class="badge bg-warning text-dark">Acción Requerida</span></h3>
+
+                            <div class="card-dark">
+                                <h4>Resumen de Servicios Activos</h4>
+                                <ul>
+                                    <li><strong>Hosting Siteground:</strong> Inicio el <strong>4 de octubre</strong> de
+                                        2025. Renovación <strong>4 de octubre</strong> de 2026: <strong
+                                            class="text-info">$96 USD / ~$1,632 MXN anual</strong>.</li>
+                                    <li><strong>Mantenimiento Web:</strong> Revisión rápida semanal cada sábado. Pagado
+                                        hasta <strong>Diciembre 2025</strong>.</li>
+                                    <!--                                 <li><strong>Stack Técnico:</strong> WordPress + WooCommerce (catálogo con pedido vía WhatsApp) + Tema Kadence con Kadence Blocks.</li>
+ -->
+                                    <li><strong>Costo mensual de mantenimiento:</strong> <strong class="text-info">$8 USD / ~$136 MXN/mes</strong>.</li>
+                                </ul>
+                            </div>
+
+                            <div class="alert-success-custom mb-3">
+                                <strong>✅ Cortesía Comercial:</strong> Como muestra de compromiso, los meses de
+                                <strong>Enero, Febrero y Marzo 2026</strong> se absorben de forma gratuita, manteniendo
+                                la revisión activa sin cargo.
+                            </div>
+
+                            <div class="card-dark" style="border-color:var(--accent)">
+                                <h4>🎯 Nueva Propuesta: Plan Semestral</h4>
+                                <p class="text-muted-custom">Inicio: <strong>Abril 2026</strong> — Fin:
+                                    <strong>Septiembre 2026</strong> · <strong class="text-info">$8 USD × 6 meses = $48 USD (~$816 MXN) total</strong></p>
+                                <ul>
+                                    <li>Revisión técnica semanal (sábados): actualizaciones de WordPress, tema Kadence,
+                                        plugins y seguridad.</li>
+                                    <li>Monitoreo de disponibilidad.</li>
+                                    <li>Implementación de las mejoras estratégicas detalladas en este documento.</li>
+                                    <li>Reporte mensual de estado.</li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        <!-- ========== 2. AUDITORÍA VISUAL ========== -->
+                        <section id="auditoria">
+                            <h3 class="section-title">🔍 Auditoría Visual del Sitio</h3>
+                            <p class="text-muted-custom">Realice una revisión directa de la página de inicio y la
+                                landing de Guadalajara para identificar problemas o mejoras.</p>
+
+                            <h5 class="text-white mt-4 mb-3">Página de Inicio</h5>
+                            <img src="img/homepage.png" alt="Auditoría Homepage Espeled" class="img-audit">
+                            <div class="alert-dark-custom mb-3">
+                                <strong>⚠️ Hallazgos críticos:</strong>
+                                <ul class="mt-2 mb-0">
+                                    <li>Barra azul superior innecesaria: <em>"La página está optimizada para
+                                            dispositivos móviles"</em> — resta elegancia.</li>
+                                </ul>
+                            </div>
+
+                            <h5 class="text-white mt-4 mb-3">Landing Page — Guadalajara</h5>
+                            <div class="row">
+                                <div class="col-md-6"><img src="img/landing-top.png" alt="Landing Top"
+                                        class="img-audit"></div>
+                                <div class="col-md-6"><img src="img/landing-middle.png" alt="Landing Middle"
+                                        class="img-audit"></div>
+                            </div>
+                            <div class="alert-dark-custom mt-2">
+                                <strong>⚠️ Problema de Embudo:</strong> Los botones "COMPRA AHORA", "GALERÍA",
+                                "BENEFICIOS", "PERSONALIZAR" y "Más información" <strong>sacan al usuario de la landing
+                                    page</strong>. Cada clic que aleja al usuario del formulario = un cliente potencial
+                                perdido.
+                            </div>
+
+                            <h5 class="text-white mt-4 mb-3">🔒 Seguridad</h5>
+                            <div class="card-dark" style="border-color:var(--danger)">
+                                <h4 style="color:var(--danger)">Cambiar URL de acceso /wp-admin</h4>
+                                <p class="text-muted-custom small">Actualmente el panel de administración es accesible
+                                    desde la URL predeterminada <code>/wp-admin</code> y <code>/wp-login.php</code>.
+                                    Esta es la primera dirección que atacan los bots y hackers para intentar accesos por
+                                    fuerza bruta.</p>
+                                <ul>
+                                    <li><strong>Riesgo:</strong> Miles de intentos de login automatizados diariamente,
+                                        consumiendo recursos del servidor y representando un riesgo de seguridad.</li>
+                                    <li><strong>Solución:</strong> Activar la opción de URL de acceso personalizada
+                                        desde el plugin <strong>SiteGround Security</strong> (ya instalado en el
+                                        hosting, solo falta configurarlo).</li>
+                                    <li><strong>Resultado:</strong> Quien visite <code>/wp-admin</code> verá un error
+                                        404 en lugar del formulario de login.</li>
+                                </ul>
+                                <span class="badge-tech">Prioridad: Alta</span>
+                                <span class="badge-tech">Esfuerzo: 5 min</span>
+                                <span class="badge-tech">Incluido en mantenimiento</span>
+                            </div>
+                        </section>
+
+                        <!-- ========== 3. FASE 1 ========== -->
+                        <section id="fase1">
+                            <h3 class="section-title"><span class="phase-number">1</span> Correcciones Críticas <span
+                                    class="badge badge-phase">Quick Wins</span></h3>
+                            <p class="text-muted-custom">El mercado del lujo requiere confianza visual del 100%. Los
+                                detalles importan.</p>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="card-dark h-100">
+                                        <h4>Eliminar Ruido Visual</h4>
+                                        <p class="text-muted-custom small">Remover la barra azul <em>"La página está
+                                                optimizada para dispositivos móviles"</em>. Si funciona bien en móvil,
+                                            el usuario lo experimenta sin necesidad de leerlo.</p>
+                                        <span class="badge-tech">Prioridad: Alta</span>
+                                        <span class="badge-tech">Esfuerzo: 15 min</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card-dark h-100">
+                                        <h4>Mejorar CTA Principal</h4>
+                                        <p class="text-muted-custom small">Cambiar "Diseña Ahora" por algo más directo
+                                            como <strong>"Cotiza tu Espejo a Medida"</strong> para orientar a la acción
+                                            de contacto.</p>
+                                        <span class="badge-tech">Prioridad: Alta</span>
+                                        <span class="badge-tech">Esfuerzo: 10 min</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- ========== 4. FASE 2 - LANDINGS ========== -->
+                        <section id="fase2">
+                            <h3 class="section-title"><span class="phase-number">2</span> Landing Pages — Estrategia de
+                                Conversión</h3>
+
+                            <div class="alert-info-custom mb-4">
+                                <strong>💡 Recomendación:</strong> Crear una versión nueva (V2) de la landing y
+                                reemplazarla en la misma URL <code>/espejos-con-luz-guadalajara/</code> para conservar
+                                el posicionamiento SEO. Guardar backup de la versión anterior.
+                            </div>
+
+                            <!-- LANDING 1 -->
+                            <div class="card-dark" style="border-left:3px solid var(--accent)">
+                                <div class="d-flex align-items-center mb-3">
+                                    <span class="badge bg-info text-dark me-2">Landing 1</span>
+                                    <h5 class="mb-0 text-white">Espejos LED a Medida en Guadalajara</h5>
+                                </div>
+                                <p class="text-muted-custom small mb-3"><strong>Objetivo:</strong> Captar clientes del
+                                    Área Metropolitana de GDL desde Google / Google Ads.</p>
+                                <table class="table table-dark-custom table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Sección</th>
+                                            <th>Contenido</th>
+                                            <th>Objetivo</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Hero Video/Imagen</td>
+                                            <td>"Fabricamos tu espejo LED a medida — 4.9⭐ en Google"</td>
+                                            <td>Impacto + Confianza</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Barra de Confianza</td>
+                                            <td>✅ Fabricantes · ✅ 2 años garantía · ✅ Envío asegurado</td>
+                                            <td>Eliminar objeciones</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Galería Proyectos</td>
+                                            <td>4-6 fotos Antes/Después de instalaciones reales</td>
+                                            <td>Prueba social visual</td>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td>3 Columnas Valor</td>
+                                            <td>Personalización · Tecnología Premium · Instalación GDL</td>
+                                            <td>Diferenciación</td>
+                                        </tr>
+                                        <tr>
+                                            <td>5</td>
+                                            <td>Testimonios</td>
+                                            <td>3 reseñas reales de Google Maps con nombre y foto</td>
+                                            <td>Prueba social textual</td>
+                                        </tr>
+                                        <tr>
+                                            <td>6</td>
+                                            <td>Formulario + WhatsApp</td>
+                                            <td>Nombre, WhatsApp, ¿Baño o recámara? + 2 botones</td>
+                                            <td><strong>CONVERSIÓN</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td>7</td>
+                                            <td>Mapa Google + Dirección</td>
+                                            <td>Mapa interactivo del showroom + horarios</td>
+                                            <td>Visita presencial</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- LANDING 2 -->
+                            <div class="card-dark" style="border-left:3px solid var(--warning)">
+                                <div class="d-flex align-items-center mb-3">
+                                    <span class="badge bg-warning text-dark me-2">Landing 2</span>
+                                    <h5 class="mb-0 text-white">Catálogo Espejos LED 2026 — Descarga Gratis</h5>
+                                </div>
+                                <p class="text-muted-custom small mb-1"><strong>Objetivo Principal (Orgánico):</strong> Colocar en el link de Instagram y como "Llamado a la Acción" en los artículos del blog. Permite enviarla a clientes que pidan info, forzándolos a dejar sus datos antes de darles el PDF.</p>
+                                <p class="text-muted-custom small mb-3"><strong>Proyección (Ads):</strong> Si en algún momento decides pagar publicidad, esta landing ya estará lista para recibir tráfico y convertir.</p>
+                                <table class="table table-dark-custom table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Sección</th>
+                                            <th>Contenido</th>
+                                            <th>Objetivo</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Hero + Mockup PDF</td>
+                                            <td>"Descarga Gratis el Catálogo 2026 — 10+ modelos con precios"</td>
+                                            <td>Atracción</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Preview Interior</td>
+                                            <td>3-4 imágenes tipo "páginas internas" del catálogo</td>
+                                            <td>Deseo por el contenido</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Formulario Captura</td>
+                                            <td>Nombre, WhatsApp, Email → "Descargar Mi Catálogo"</td>
+                                            <td><strong>CAPTURA DE LEAD</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td>Beneficios</td>
+                                            <td>Precios actualizados · Guía de medidas · Descuentos exclusivos</td>
+                                            <td>Justificar intercambio</td>
+                                        </tr>
+                                        <tr>
+                                            <td>5</td>
+                                            <td>Barra Urgencia</td>
+                                            <td>"10% de descuento este mes para quienes descarguen"</td>
+                                            <td>FOMO</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- LANDING 3 -->
+                            <div class="card-dark" style="border-left:3px solid var(--accent2)">
+                                <div class="d-flex align-items-center mb-3">
+                                    <span class="badge bg-success me-2">Landing 3</span>
+                                    <h5 class="mb-0 text-white">Espejos LED para Arquitectos y Diseñadores</h5>
+                                </div>
+                                <p class="text-muted-custom small mb-3"><strong>Objetivo:</strong> Captar proyectistas
+                                    que compren por volumen o recomienden la marca (B2B).</p>
+                                <table class="table table-dark-custom table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Sección</th>
+                                            <th>Contenido</th>
+                                            <th>Objetivo</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Hero Profesional</td>
+                                            <td>"Espejos LED a medida para proyectos de arquitectura"</td>
+                                            <td>Posicionamiento B2B</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Portafolio</td>
+                                            <td>3-4 proyectos: hotel boutique, salón, residencia de lujo</td>
+                                            <td>Credibilidad</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Programa Aliados</td>
+                                            <td>Precios por volumen, muestras, crédito 30 días</td>
+                                            <td>Captar interés B2B</td>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td>Formulario B2B</td>
+                                            <td>Contacto, Empresa, Tipo proyecto, Volumen estimado</td>
+                                            <td><strong>LEAD B2B</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td>5</td>
+                                            <td>Ficha Técnica</td>
+                                            <td>Tipos LED, certificación IP, espesores, garantía</td>
+                                            <td>Credibilidad técnica</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <!-- ========== 5. HEATMAPS ========== -->
+                        <section id="heatmaps">
+                            <h3 class="section-title">🔥 Herramientas de Mapa de Calor</h3>
+                            <p class="text-muted-custom">Un mapa de calor muestra dónde hacen clic los visitantes, hasta
+                                dónde hacen scroll y qué ignoran. Es evidencia real.</p>
+
+                            <table class="table table-dark-custom">
+                                <thead>
+                                    <tr>
+                                        <th>Característica</th>
+                                        <th>Microsoft Clarity</th>
+                                        <th>Hotjar</th>
+                                        <th>Lucky Orange</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Precio</strong></td>
+                                        <td>🟢 100% Gratis (sin límites)</td>
+                                        <td>🟡 Freemium / desde $39 USD/mes</td>
+                                        <td>🟡 Desde $32 USD/mes</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Impacto velocidad</strong></td>
+                                        <td>🟢 Mínimo (ultra-ligero)</td>
+                                        <td>🔴 Moderado-Alto</td>
+                                        <td>🟡 Moderado</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Heatmaps</strong></td>
+                                        <td>✅ Clics, scroll, áreas</td>
+                                        <td>✅ Clics, scroll, movimiento</td>
+                                        <td>✅ Clics, scroll, movimiento</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Grabación sesiones</strong></td>
+                                        <td>✅ Ilimitado</td>
+                                        <td>⚠️ Limitado gratis</td>
+                                        <td>⚠️ Limitado</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Encuestas</strong></td>
+                                        <td>❌</td>
+                                        <td>✅ Gran fortaleza</td>
+                                        <td>✅</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Chat en vivo</strong></td>
+                                        <td>❌</td>
+                                        <td>❌</td>
+                                        <td>✅</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <div class="alert-success-custom">
+                                <strong>✅ Recomendación: Microsoft Clarity.</strong> Es gratuito, ultraligero (no afecta
+                                Core Web Vitals), y ofrece todo lo necesario. Se instala vía Google Tag Manager con
+                                carga diferida para cero impacto en velocidad.
+                            </div>
+                        </section>
+
+                        <!-- ========== 6. FASE 3 - LEAD MAGNET ========== -->
+                        <section id="fase3">
+                            <h3 class="section-title"><span class="phase-number">3</span> Lead Magnet — Captura de
+                                Clientes</h3>
+                            <p class="text-muted-custom">Un recurso gratuito de alto valor a cambio de datos de
+                                contacto. El visitante "gana algo" y tú obtienes un lead que puedes nutrir hasta la
+                                venta.</p>
+
+                            <div class="card-dark mb-3" style="border-color:var(--accent)">
+                                <h4>⭐ Recomendación: Catálogo Digital PDF</h4>
+                                <p class="text-muted-custom small">Ya tenemos las fotos y precios. Se diseña en Canva Pro
+                                    con aspecto tipo catálogo de lujo. Incluiría todos los modelos, precios base, guía
+                                    de medidas y opciones de tecnología.</p>
+                            </div>
+
+                            <h5 class="text-white mt-4 mb-3">Flujo Técnico Paso a Paso</h5>
+                            <div class="timeline-item">
+                                <strong class="text-info">1. Visitante llega a la Landing / Popup</strong>
+                                <p class="text-muted-custom small mb-0">Ve la oferta: "Descarga nuestro Catálogo 2026"
+                                </p>
+                            </div>
+                            <div class="timeline-item">
+                                <strong class="text-info">2. Llena formulario</strong>
+                                <p class="text-muted-custom small mb-0">Campos: Nombre + WhatsApp + Email</p>
+                            </div>
+                            <div class="timeline-item">
+                                <strong class="text-info">3. Datos van al Email Marketing</strong>
+                                <p class="text-muted-custom small mb-0">WordPress → Brevo o MailerLite (ambos gratuitos)
+                                </p>
+                            </div>
+                            <div class="timeline-item">
+                                <strong class="text-info">4. Automatización envía email con PDF</strong>
+                                <p class="text-muted-custom small mb-0">Email automático de bienvenida con enlace de
+                                    descarga</p>
+                            </div>
+                            <div class="timeline-item">
+                                <strong class="text-info">5. Secuencia de Correos Automáticos</strong>
+                                <p class="text-muted-custom small mb-0">Día 3: Los 3 espejos más vendidos · Día 7: Testimonio real · Día 14: Oferta 10% de descuento</p>
+                            </div>
+
+                            <h5 class="text-white mt-4 mb-3">Herramientas Recomendadas (Mínimo Costo)</h5>
+                            <table class="table table-dark-custom table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Función</th>
+                                        <th>Herramienta</th>
+                                        <th>Costo</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Crear PDF</td>
+                                        <td>Canva Pro (suscripción incluida, usare la mia para generarlo)</td>
+                                        <td>$0</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Formulario</td>
+                                        <td>Kadence Blocks Form (ya instalado)</td>
+                                        <td>$0</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Popup inteligente</td>
+                                        <td>Kadence Conversions o plugin gratuito (Popup Maker)</td>
+                                        <td>$0</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Email Marketing</td>
+                                        <td><strong>Brevo</strong> (gratis hasta 300 emails/día)</td>
+                                        <td>$0</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </section>
+
+                        <!-- ========== 7. RESEÑAS ========== -->
+                        <section id="resenas">
+                            <h3 class="section-title"><span class="phase-number">4</span> Reseñas Google — Aprovechando
+                                las 107 Reseñas</h3>
+
+                            <img src="img/google-reviews.png" alt="Reseñas Google Maps Espeled" class="img-audit mb-3">
+
+                            <div class="row mb-3">
+                                <div class="col-md-3 col-6">
+                                    <div class="card-dark text-center">
+                                        <div style="font-size:2rem;font-weight:700;color:var(--warning)">4.9⭐</div>
+                                        <small class="text-muted-custom">Calificación</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-6">
+                                    <div class="card-dark text-center">
+                                        <div style="font-size:2rem;font-weight:700;color:var(--accent)">107</div>
+                                        <small class="text-muted-custom">Reseñas</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-6">
+                                    <div class="card-dark text-center">
+                                        <div style="font-size:2rem;font-weight:700;color:var(--accent2)">50</div>
+                                        <small class="text-muted-custom">Mencionan "calidad"</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-6">
+                                    <div class="card-dark text-center">
+                                        <div style="font-size:2rem;font-weight:700;color:#fff">28</div>
+                                        <small class="text-muted-custom">Mencionan "trabajo"</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-dark">
+                                <h4>Cómo aprovechar esta mina de oro</h4>
+                                <ul>
+                                    <li><strong>Incrustar en Landing Pages</strong> con widget de Google Reviews
+                                        (Elfsight gratis).</li>
+                                    <li><strong>Stories de Instagram</strong> con capturas de las mejores reseñas.</li>
+                                    <li><strong>Barra en Homepage:</strong> "4.9⭐ en 107 reseñas de Google" enlazando al
+                                        perfil.</li>
+                                </ul>
+                            </div>
+
+                            <div class="card-dark">
+                                <h4>📝 Protocolo Integral de Reseñas</h4>
+                                
+                                <div class="alert-info-custom mt-2 mb-3 px-3 py-2">
+                                    <strong>Paso 1: Diagnóstico interno.</strong> Antes de implementar esto, me gustaría saber sobre cómo piden las reseñas actualmente, quién lo hace y cuándo. Con esto podremos adaptar el protocolo a su flujo de trabajo real.
+                                </div>
+
+                                <p class="text-muted-custom small mb-2">Una vez definido, recomiendo el siguiente enfoque de dos pasos:</p>
+                                
+                                <ul class="mb-3">
+                                    <li class="mb-2">
+                                        <strong class="text-info">Paso 2: En Persona (El Momento de Euforia).</strong> Al finalizar la instalación, cuando el cliente ve su espejo encendido por primera vez, el instalador puede decir:
+                                        <div class="blockquote-dark mt-1 mb-1 py-2 px-3" style="font-size: 0.9em;">
+                                            <em>"¡Qué bueno que le gustó! Nos ayudaría muchísimo si nos regala una pequeña calificación en Google. Si gusta le mando el link por WhatsApp para que lo tenga a la mano."</em>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <strong class="text-info">Paso 3: Seguimiento por WhatsApp.</strong> Enviar 2 horas después de la instalación garantizando que tengan el enlace:
+                                        <div class="blockquote-dark mt-1 mb-1 py-2 px-3" style="font-size: 0.9em;">
+                                            <em>"¡Hola [nombre]! Soy [nombre] de Espeled, espero esté disfrutando su nuevo espejo 😊 Le dejo por aquí el link que comentamos: [ENLACE]. Si puede subir una fotito sería genial. ¡Gracias!"</em>
+                                        </div>
+                                    </li>
+                                </ul>
+                                
+                                <p class="text-muted-custom small mt-2 mb-0"><strong>Meta:</strong> 4 instalaciones/semana × 50% conversión = ~8 reseñas/mes = <strong>48 nuevas en 6 meses → 155 reseñas totales</strong></p>
+                            </div>
+                        </section>
+
+                        <!-- ========== 8. BLOG SEO ========== -->
+                        <section id="blog">
+                            <h3 class="section-title"><span class="phase-number">4</span> Blog SEO Inbound — Calendario
+                                Editorial</h3>
+                            <p class="text-muted-custom">2 artículos/mes, 800-1200 palabras, enfocados en intención de
+                                búsqueda real con CTA al final (WhatsApp o productos).</p>
+
+                            <table class="table table-dark-custom">
+                                <thead>
+                                    <tr>
+                                        <th>Mes</th>
+                                        <th>Artículo Informativo</th>
+                                        <th>Artículo Comercial</th>
+                                        <th>Keyword Target</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Abr</strong></td>
+                                        <td>¿A qué altura colocar un espejo LED sobre el lavabo?</td>
+                                        <td>Espejo LED vs Tradicional: 5 razones</td>
+                                        <td>altura espejo baño</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>May</strong></td>
+                                        <td>Espejo antivaho: ¿vale la pena?</td>
+                                        <td>Los 5 espejos LED más elegantes 2026</td>
+                                        <td>espejo antivaho</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Jun</strong></td>
+                                        <td>Luz fría vs cálida: cuál va mejor según tu cerámica</td>
+                                        <td>Cómo hacer tu baño pequeño más grande con espejo</td>
+                                        <td>luz fria calida espejo</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Jul</strong></td>
+                                        <td>¿Se necesita electricista para instalarlo?</td>
+                                        <td>Espejos con Bluetooth: ¿moda o funcionalidad?</td>
+                                        <td>instalar espejo LED</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Ago</strong></td>
+                                        <td>Cómo limpiar tu espejo LED sin dañar la luz</td>
+                                        <td>Guía: qué espejo comprar según tu baño</td>
+                                        <td>limpiar espejo LED</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Sep</strong></td>
+                                        <td>Espejos LED para negocios: salones, hoteles y spas</td>
+                                        <td>Espeled: de un legado de 50 años al espejo más moderno</td>
+                                        <td>espejos LED Guadalajara</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </section>
+
+                        <!-- ========== 9. BACKLINKS ========== -->
+                        <section id="backlinks">
+                            <h3 class="section-title">🔗 Estrategia de Backlinks para Guadalajara</h3>
+                            <p class="text-muted-custom">Un backlink es una "recomendación digital". Cuando un sitio de
+                                autoridad enlaza a espeled.com, Google sube tu posición.</p>
+
+                            <table class="table table-dark-custom table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Acción</th>
+                                        <th>Detalle</th>
+                                        <th>Costo</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td><strong>Directorios locales</strong></td>
+                                        <td>Páginas Amarillas MX, Yelp MX, CANACO GDL, Cámara de Comercio</td>
+                                        <td>$0</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td><strong>Plataformas de diseño</strong></td>
+                                        <td>Houzz México, Habitissimo, Homify — perfil + portafolio con enlace</td>
+                                        <td>$0</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td><strong>Prensa local digital</strong></td>
+                                        <td>Nota en Informador.mx, GDL en Corto, blogs de diseño MX</td>
+                                        <td>$0-$150 USD</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td><strong>Guest post</strong></td>
+                                        <td>Artículo invitado en blogs de decoración/remodelación</td>
+                                        <td>$0-$50 USD</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td><strong>Patrocinio eventos</strong></td>
+                                        <td>Expo Guadalajara, ferias de diseño, colaboración con despachos</td>
+                                        <td>$100-$300 USD</td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td><strong>Enlaces rotos</strong></td>
+                                        <td>Encontrar 404s en sitios de decoración MX y ofrecer el contenido de Espeled
+                                        </td>
+                                        <td>$0</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <div class="alert-dark-custom">
+                                <strong>🚫 IMPORTANTE:</strong> NUNCA comprar paquetes de "500 backlinks por $20 USD".
+                                Google penaliza estas prácticas con desindexación total.
+                            </div>
+                        </section>
+
+                        <!-- ========== 10. CRONOGRAMA Y COSTOS ========== -->
+                        <section id="costos">
+                            <h3 class="section-title">📊 Cronograma de Ejecución y Costos</h3>
+
+                            <h5 class="text-white mt-4 mb-3">Línea de Tiempo — 6 Meses</h5>
+                            <div class="timeline-item">
+                                <strong class="text-info">Semana 1-2 (Abril)</strong> — Fase 1: Quick Wins
+                                <p class="text-muted-custom small mb-0">Corregir typos, barra azul, CTAs. Instalar
+                                    Microsoft Clarity.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <strong class="text-info">Semana 2-4 (Abril)</strong> — Fase 2 + 3: Landings + Lead
+                                Magnet
+                                <p class="text-muted-custom small mb-0">Crear Landing V2 GDL + PDF Catálogo + configurar
+                                    Brevo + Popup.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <strong class="text-info">Mayo</strong> — Landing Catálogo + Landing B2B + Blog
+                                <p class="text-muted-custom small mb-0">Lanzar landing de catálogo descargable. Landing
+                                    B2B. Artículos 1-2.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <strong class="text-info">Junio - Julio</strong> — Backlinks + Blog + Reseñas
+                                <p class="text-muted-custom small mb-0">Alta en directorios. Outreach prensa local.
+                                    Artículos 3-6. Seguimiento reseñas.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <strong class="text-info">Agosto - Septiembre</strong> — Consolidación
+                                <p class="text-muted-custom small mb-0">Guest posts + enlaces rotos. Artículos 7-12.
+                                    Análisis resultados con Clarity.</p>
+                            </div>
+
+                            <!-- TABLA 1: HERRAMIENTAS -->
+                            <h5 class="text-white mt-4 mb-3">1. Costo de Herramientas y Plataformas</h5>
+                            <p class="text-muted-custom small">Estas son las plataformas necesarias. Se seleccionaron
+                                opciones gratuitas o ya disponibles para minimizar costos recurrentes.</p>
+                            <table class="table table-dark-custom table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Herramienta</th>
+                                        <th>Uso</th>
+                                        <th>Costo</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Kadence + Kadence Blocks</td>
+                                        <td>Tema y bloques del sitio (ya instalado)</td>
+                                        <td class="text-success">$0</td>
+                                    </tr>
+                                    <tr>
+                                        <td>WooCommerce</td>
+                                        <td>Catálogo de productos con pedido WhatsApp</td>
+                                        <td class="text-success">$0</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Canva Pro</td>
+                                        <td>Diseño del catálogo PDF</td>
+                                        <td class="text-success">$0 <small>(suscripción propia)</small></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Brevo (Email Marketing)</td>
+                                        <td>Automatización de emails y nurturing</td>
+                                        <td class="text-success">$0 <small>(gratis hasta 300/día)</small></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Microsoft Clarity</td>
+                                        <td>Mapas de calor y grabación de sesiones</td>
+                                        <td class="text-success">$0 <small>(100% gratis)</small></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Elfsight / Google Reviews Widget</td>
+                                        <td>Mostrar reseñas en el sitio</td>
+                                        <td class="text-success">$0 <small>(plan gratuito)</small></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Popup Maker</td>
+                                        <td>Popups para captura de leads</td>
+                                        <td class="text-success">$0 <small>(plugin gratuito)</small></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="alert-success-custom mb-4">
+                                <strong>✅ Ahorro en herramientas:</strong> Todas las plataformas seleccionadas son
+                                gratuitas o ya están cubiertas. No tendrás que pagar suscripciones adicionales de
+                                software.
+                            </div>
+
+                            <!-- TABLA 2: SERVICIOS PROFESIONALES -->
+                            <h5 class="text-white mt-4 mb-3">2. Inversión en Servicios Profesionales</h5>
+                            <p class="text-muted-custom small">Costo por diseño, desarrollo, configuración, redacción y
+                                gestión de cada fase de la estrategia.</p>
+                            <table class="table table-dark-custom">
+                                <thead>
+                                    <tr>
+                                        <th>Servicio</th>
+                                        <th>Incluye</th>
+                                        <th>Inversión</th>
+                                        <th>Frecuencia</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="background:rgba(13,202,240,.08)">
+                                        <td><strong>Mantenimiento Web</strong></td>
+                                        <td>Actualización semanal de WordPress, Kadence, plugins, seguridad, backups y
+                                            hosting</td>
+                                        <td><strong class="text-info">$8 USD / ~$136 MXN/mes</strong></td>
+                                        <td>Mensual × 6</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Correcciones Fase 1 (Quick Wins)</td>
+                                        <td>Corregir typos, eliminar barra azul, mejorar CTAs, ajustar reflejo texto
+                                        </td>
+                                        <td colspan="2" class="text-center text-success">Incluido en mantenimiento</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>3 Landing Pages</strong></td>
+                                        <td>Diseño, maquetado en Kadence Blocks, copywriting de conversión, formularios
+                                            y optimización móvil. <strong>$70 USD c/u</strong></td>
+                                        <td><span style="text-decoration:line-through;color:#dc3545;opacity:.7">$210
+                                                USD</span><br><strong class="text-success">$140 USD / ~$2,380 MXN</strong><br><small
+                                                class="text-success">🎁 1ª landing gratis</small></td>
+                                        <td>Único</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Lead Magnet Completo</strong></td>
+                                        <td>Diseño del catálogo PDF en Canva, configuración de Brevo, automatización de
+                                            emails (bienvenida + secuencia de 3 emails), popup de captura</td>
+                                        <td><strong>$70 USD / ~$1,190 MXN</strong></td>
+                                        <td>Único</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Setup Analítica y Tracking</strong></td>
+                                        <td>Instalación de Microsoft Clarity vía GTM, configuración de eventos, widget
+                                            de reseñas Google en sitio</td>
+                                        <td><strong>$40 USD / ~$680 MXN</strong></td>
+                                        <td>Único</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Blog SEO (12 artículos)</strong></td>
+                                        <td>Investigación de keywords, redacción de 12 artículos (800-1200 palabras),
+                                            optimización SEO onpage, imágenes y publicación</td>
+                                        <td><strong>$25 USD / ~$425 MXN/art.</strong></td>
+                                        <td>2/mes × 6 meses</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Estrategia de Backlinks</strong></td>
+                                        <td>Alta en directorios locales (Houzz, Homify, CANACO), outreach a prensa
+                                            local, guest posts, detección de enlaces rotos</td>
+                                        <td><strong>$90 USD / ~$1,530 MXN</strong></td>
+                                        <td>Semestral</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <!-- RESUMEN TOTAL -->
+                            <h5 class="text-white mt-4 mb-3">Resumen de Inversión Total — 6 Meses</h5>
+                            <table class="table table-dark-custom">
+                                <thead>
+                                    <tr>
+                                        <th>Concepto</th>
+                                        <th>Cálculo</th>
+                                        <th class="text-end">Subtotal</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Mantenimiento Web (6 meses)</td>
+                                        <td>$8 USD × 6 meses</td>
+                                        <td class="text-end">$48 USD (~$816 MXN)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3 Landing Pages</td>
+                                        <td>$70 × 3 = <span style="text-decoration:line-through;opacity:.5">$210</span>
+                                            — 1ª gratis</td>
+                                        <td class="text-end"><strong class="text-success">$140 USD (~$2,380 MXN)</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Lead Magnet Completo</td>
+                                        <td>PDF + Brevo + Popup + Emails</td>
+                                        <td class="text-end">$70 USD (~$1,190 MXN)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Setup Analítica y Tracking</td>
+                                        <td>Clarity + Widget Reviews</td>
+                                        <td class="text-end">$40 USD (~$680 MXN)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Blog SEO</td>
+                                        <td>$25 × 12 artículos</td>
+                                        <td class="text-end">$300 USD (~$5,100 MXN)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Estrategia Backlinks</td>
+                                        <td>Gestión semestral</td>
+                                        <td class="text-end">$90 USD (~$1,530 MXN)</td>
+                                    </tr>
+                                    <tr style="background:rgba(13,202,240,.12);font-size:1.05rem">
+                                        <td><strong>TOTAL INVERSIÓN SEMESTRAL</strong></td>
+                                        <td></td>
+                                        <td class="text-end"><strong class="text-info">$688 USD (~$11,696 MXN)</strong></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <div class="row mt-4">
+                                <div class="col-md-4">
+                                    <div class="cost-highlight">
+                                        <small class="text-muted-custom">Inversión Mensual Promedio</small>
+                                        <div class="amount">~$115 USD (~$1,955 MXN)</div>
+                                        <small class="text-muted-custom">6 meses</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="cost-highlight">
+                                        <small class="text-muted-custom">Costo en Herramientas</small>
+                                        <div class="amount" style="color:var(--accent2)">$0 USD</div>
+                                        <small class="text-muted-custom">sin suscripciones extra</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="cost-highlight">
+                                        <small class="text-muted-custom">Entregables Totales</small>
+                                        <div class="amount" style="color:var(--warning)">20+</div>
+                                        <small class="text-muted-custom">landings, artículos, PDF, emails</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="alert-info-custom mt-4">
+                                <strong>💡 Nota Técnica y Administrativa:</strong> La inversión cubre exclusivamente <strong>servicios
+                                    profesionales</strong> (diseño, desarrollo, redacción, configuración y gestión).
+                                Todas las herramientas y plataformas utilizadas son gratuitas, eliminando costos
+                                recurrentes de software. <strong>Importante:</strong> Recordar que los valores expresados no incluyen costos o comisiones por transferencia/envío de dinero internacional a El Salvador (Western Union). El pago puede acordarse en cuotas mensuales según conveniencia y el tipo de cambio se calculará al momento del depósito.
+                            </div>
+                        </section>
+
+                        <!-- FLEXIBILIDAD -->
+                        <section class="mt-5" style="border-top:1px solid var(--border);padding-top:40px">
+                            <h3 class="section-title">🤝 Plan Flexible — Acepto Contrapropuestas</h3>
+                            <p class="text-muted-custom">Esta estrategia es una propuesta completa, pero <strong>no es
+                                    un paquete cerrado</strong>. Puedes elegir las fases que consideres prioritarias y
+                                ajustar el alcance según tu presupuesto y necesidades.</p>
+
+                            <div class="card-dark" style="border-color:var(--warning)">
+                                <h4 style="color:var(--warning)">Ejemplos de personalización</h4>
+                                <ul>
+                                    <li><strong>Reducir el Blog SEO:</strong> En lugar de 2 artículos/mes, solo 1
+                                        artículo/mes (6 artículos totales = $150 USD en lugar de $300).</li>
+                                    <li><strong>Empezar solo con las Landings + Lead Magnet:</strong> Priorizar la
+                                        conversión directa y dejar el blog y backlinks para una segunda etapa.</li>
+                                    <li><strong>Agregar fases progresivamente:</strong> Arrancar con mantenimiento +
+                                        quick wins (Fase 1) y sumar servicios mes a mes.
+                                    </li>
+                                    <li><strong>Modificar cualquier precio o alcance:</strong> Si algún servicio no
+                                        encaja, podemos ajustar cantidades, frecuencias o prioridades.</li>
+                                </ul>
+                            </div>
+
+                            <div class="alert-warning-custom mt-3">
+                                <strong>💬 En resumen:</strong> Dime qué te interesa más, qué presupuesto quieres destinar y
+                                armamos un plan a la medida. La idea es avanzar juntos, no que sea un "todo o nada".
+                            </div>
+                        </section>
+
+                        <!-- CIERRE -->
+                        <section class="text-center py-5 mt-4" style="border-top:1px solid var(--border)">
+                            <!-- <h4 class="fw-light text-white mb-3">¿Listo para arrancar?</h4> -->
+                            <p class="text-muted-custom">Quedo a la orden para revisarlo a detalle y dar luz verde al
+                                Plan Semestral.</p>
+                        </section>
+
+                    </div><!-- /col-9 -->
+                </div><!-- /row -->
+            </div><!-- /container -->
+        </main>
+
+        <footer class="text-muted py-4 text-center" style="border-top:1px solid var(--border)">
+            <div class="container">
+                <p class="mb-1 small text-muted-custom">© Oscar Moran · Documento preparado exclusivamente para Espeled</p>
+                <p class="mb-0 small text-muted-custom">Abril 2026 · Confidencial</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scroll for TOC links
+        document.querySelectorAll('.nav-toc a').forEach(a => {
+            a.addEventListener('click', function (e) {
+                e.preventDefault();
+                const t = document.querySelector(this.getAttribute('href'));
+                if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+        // Highlight active TOC item on scroll
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-toc .nav-link');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) current = s.getAttribute('id') });
+            navLinks.forEach(l => { l.classList.remove('active'); if (l.getAttribute('href') === '#' + current) l.classList.add('active') });
+        });
+    </script>
+</body>
+
+</html>
