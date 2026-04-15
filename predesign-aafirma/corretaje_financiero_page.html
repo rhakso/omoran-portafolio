@@ -1,0 +1,977 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+
+  .aa-page {
+    font-family: 'DM Sans', sans-serif;
+    background: #0a0a08;
+    color: #e8e4dc;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .aa-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 3rem;
+    border-bottom: 0.5px solid rgba(232,228,220,0.15);
+    background: #0a0a08;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .aa-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    color: #e8e4dc;
+  }
+
+  .aa-logo span {
+    color: #b8974a;
+  }
+
+  .aa-nav-links {
+    display: flex;
+    gap: 2.5rem;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(232,228,220,0.55);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .aa-nav-links li { cursor: pointer; }
+  .aa-nav-links li:hover { color: #e8e4dc; }
+  .aa-nav-links li.active { color: #b8974a; }
+
+  .aa-nav-cta {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 10px 24px;
+    border: 0.5px solid rgba(184,151,74,0.6);
+    color: #b8974a;
+    cursor: pointer;
+    background: transparent;
+    transition: all 0.25s;
+  }
+  .aa-nav-cta:hover { background: #b8974a; color: #0a0a08; }
+
+  /* HERO */
+  .aa-hero {
+    padding: 6rem 3rem 5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+    border-bottom: 0.5px solid rgba(232,228,220,0.1);
+    position: relative;
+  }
+
+  .aa-hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(184,151,74,0.04) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .aa-breadcrumb {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #b8974a;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .aa-breadcrumb::before {
+    content: '';
+    display: inline-block;
+    width: 28px;
+    height: 0.5px;
+    background: #b8974a;
+  }
+
+  .aa-hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4vw, 56px);
+    font-weight: 300;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: #f0ebe1;
+    margin: 0 0 1.5rem;
+  }
+
+  .aa-hero-title em {
+    font-style: italic;
+    color: #b8974a;
+  }
+
+  .aa-hero-subtitle {
+    font-size: 15px;
+    line-height: 1.75;
+    color: rgba(232,228,220,0.6);
+    font-weight: 300;
+    margin-bottom: 2.5rem;
+    max-width: 520px;
+  }
+
+  .aa-hero-sub-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(184,151,74,0.7);
+    border: 0.5px solid rgba(184,151,74,0.25);
+    padding: 6px 14px;
+    margin-bottom: 2rem;
+  }
+
+  .aa-cta-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: #b8974a;
+    color: #0a0a08;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 16px 32px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.25s;
+  }
+  .aa-cta-primary:hover { background: #d4b060; }
+  .aa-cta-arrow { font-size: 14px; }
+
+  .aa-hero-right {
+    position: relative;
+  }
+
+  .aa-video-placeholder {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #141410;
+    border: 0.5px solid rgba(184,151,74,0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .aa-video-placeholder::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      rgba(184,151,74,0.025) 0px,
+      rgba(184,151,74,0.025) 1px,
+      transparent 1px,
+      transparent 28px
+    );
+    pointer-events: none;
+  }
+
+  .aa-play-btn {
+    width: 64px;
+    height: 64px;
+    border: 0.5px solid rgba(184,151,74,0.5);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    transition: all 0.25s;
+  }
+  .aa-play-btn:hover { border-color: #b8974a; background: rgba(184,151,74,0.08); }
+  .aa-play-btn::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-top: 11px solid transparent;
+    border-bottom: 11px solid transparent;
+    border-left: 18px solid #b8974a;
+    margin-left: 4px;
+  }
+
+  .aa-video-label {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(184,151,74,0.6);
+    z-index: 1;
+  }
+
+  .aa-hero-stat-row {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 0.5px solid rgba(232,228,220,0.1);
+  }
+
+  .aa-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .aa-stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 300;
+    color: #b8974a;
+    line-height: 1;
+  }
+
+  .aa-stat-label {
+    font-size: 11px;
+    color: rgba(232,228,220,0.4);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  /* SECTION COMMON */
+  .aa-section {
+    padding: 5rem 3rem;
+    border-bottom: 0.5px solid rgba(232,228,220,0.08);
+  }
+
+  .aa-section-label {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #b8974a;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .aa-section-label::after {
+    content: '';
+    display: inline-block;
+    flex: 1;
+    max-width: 48px;
+    height: 0.5px;
+    background: rgba(184,151,74,0.4);
+  }
+
+  .aa-section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(30px, 3.5vw, 46px);
+    font-weight: 300;
+    line-height: 1.2;
+    color: #f0ebe1;
+    margin: 0 0 1rem;
+  }
+
+  /* PROBLEM SECTION */
+  .aa-problem {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .aa-problem-left .aa-section-title { max-width: 380px; }
+
+  .aa-problem-body {
+    font-size: 15px;
+    line-height: 1.8;
+    color: rgba(232,228,220,0.55);
+    font-weight: 300;
+  }
+
+  .aa-problem-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    margin-top: 0;
+  }
+
+  .aa-problem-card {
+    padding: 1.75rem 2rem;
+    background: #111109;
+    border-left: 2px solid #b8974a;
+    position: relative;
+  }
+
+  .aa-problem-card-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 300;
+    color: rgba(184,151,74,0.12);
+    position: absolute;
+    top: 0.5rem;
+    right: 1.5rem;
+    line-height: 1;
+  }
+
+  .aa-problem-card-title {
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #e8e4dc;
+    margin-bottom: 0.5rem;
+    font-weight: 400;
+  }
+
+  .aa-problem-card-body {
+    font-size: 14px;
+    color: rgba(232,228,220,0.5);
+    line-height: 1.65;
+    font-weight: 300;
+    max-width: 380px;
+  }
+
+  /* SOLUTION */
+  .aa-solution { background: #0d0d0b; }
+
+  .aa-solution-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    margin-top: 3rem;
+    background: rgba(232,228,220,0.06);
+  }
+
+  .aa-sol-card {
+    padding: 2.5rem 2rem;
+    background: #0d0d0b;
+    position: relative;
+  }
+
+  .aa-sol-icon {
+    width: 36px;
+    height: 36px;
+    border: 0.5px solid rgba(184,151,74,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: #b8974a;
+    font-weight: 300;
+    font-style: italic;
+  }
+
+  .aa-sol-card-title {
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #e8e4dc;
+    margin-bottom: 0.75rem;
+  }
+
+  .aa-sol-card-body {
+    font-size: 14px;
+    color: rgba(232,228,220,0.5);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  .aa-sol-tag {
+    display: inline-block;
+    margin-top: 1.25rem;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(184,151,74,0.65);
+    border-top: 0.5px solid rgba(184,151,74,0.25);
+    padding-top: 0.75rem;
+    width: 100%;
+  }
+
+  /* PROCESS */
+  .aa-process-inner {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .aa-process-sticky { position: sticky; top: 120px; }
+
+  .aa-process-body {
+    font-size: 15px;
+    line-height: 1.8;
+    color: rgba(232,228,220,0.5);
+    font-weight: 300;
+    margin-top: 1.5rem;
+  }
+
+  .aa-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .aa-step {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 1.5rem;
+    padding: 1.75rem 0;
+    border-bottom: 0.5px solid rgba(232,228,220,0.07);
+    position: relative;
+  }
+
+  .aa-step:last-child { border-bottom: none; }
+
+  .aa-step-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(184,151,74,0.7);
+    padding-top: 3px;
+    letter-spacing: 0.05em;
+  }
+
+  .aa-step-content-title {
+    font-size: 14px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #e8e4dc;
+    margin-bottom: 0.5rem;
+    font-weight: 400;
+  }
+
+  .aa-step-content-body {
+    font-size: 14px;
+    color: rgba(232,228,220,0.48);
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  .aa-step-tag {
+    display: inline-block;
+    margin-top: 0.75rem;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    background: rgba(184,151,74,0.08);
+    color: rgba(184,151,74,0.7);
+    padding: 4px 10px;
+  }
+
+  /* PRICING */
+  .aa-pricing { background: #0d0d0b; }
+
+  .aa-pricing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    margin-top: 3rem;
+    background: rgba(232,228,220,0.06);
+  }
+
+  .aa-price-card {
+    padding: 2.5rem 2.5rem;
+    background: #0d0d0b;
+  }
+
+  .aa-price-card.featured {
+    background: #111109;
+    border-top: 2px solid #b8974a;
+  }
+
+  .aa-price-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #b8974a;
+    margin-bottom: 1rem;
+  }
+
+  .aa-price-amount {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 300;
+    color: #f0ebe1;
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .aa-price-unit {
+    font-size: 13px;
+    color: rgba(232,228,220,0.4);
+    margin-bottom: 1.5rem;
+  }
+
+  .aa-price-desc {
+    font-size: 14px;
+    color: rgba(232,228,220,0.55);
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+  }
+
+  .aa-guarantee {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 1rem 1.25rem;
+    background: rgba(184,151,74,0.06);
+    border-left: 2px solid rgba(184,151,74,0.4);
+  }
+
+  .aa-guarantee-check {
+    width: 16px;
+    height: 16px;
+    border: 0.5px solid #b8974a;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .aa-guarantee-check::after {
+    content: '';
+    width: 4px;
+    height: 7px;
+    border-right: 1px solid #b8974a;
+    border-bottom: 1px solid #b8974a;
+    transform: rotate(45deg) translateY(-1px);
+    display: block;
+  }
+
+  .aa-guarantee-text {
+    font-size: 12px;
+    color: rgba(184,151,74,0.7);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  /* FAQ */
+  .aa-faq-inner {
+    max-width: 720px;
+    margin: 3rem auto 0;
+  }
+
+  .aa-faq-item {
+    border-bottom: 0.5px solid rgba(232,228,220,0.1);
+  }
+
+  .aa-faq-q {
+    padding: 1.5rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    cursor: pointer;
+    font-size: 15px;
+    color: #e8e4dc;
+    font-weight: 400;
+    gap: 1rem;
+    user-select: none;
+  }
+
+  .aa-faq-icon {
+    width: 20px;
+    height: 20px;
+    border: 0.5px solid rgba(184,151,74,0.4);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #b8974a;
+    font-size: 14px;
+    transition: transform 0.25s;
+  }
+
+  .aa-faq-a {
+    font-size: 14px;
+    color: rgba(232,228,220,0.5);
+    line-height: 1.75;
+    font-weight: 300;
+    padding-bottom: 1.5rem;
+    display: none;
+  }
+
+  .aa-faq-item.open .aa-faq-a { display: block; }
+  .aa-faq-item.open .aa-faq-icon { transform: rotate(45deg); }
+
+  /* FINAL CTA */
+  .aa-cta-band {
+    padding: 6rem 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .aa-cta-band::before {
+    content: 'AA';
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 260px;
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(184,151,74,0.04);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    letter-spacing: -0.05em;
+    line-height: 1;
+  }
+
+  .aa-cta-band .aa-section-label {
+    justify-content: center;
+  }
+
+  .aa-cta-band .aa-section-label::after { display: none; }
+
+  .aa-cta-band .aa-section-title {
+    max-width: 620px;
+    margin: 0 auto 1rem;
+    font-size: clamp(28px, 3.5vw, 44px);
+  }
+
+  .aa-cta-subtitle {
+    font-size: 15px;
+    color: rgba(232,228,220,0.45);
+    max-width: 480px;
+    margin: 0 auto 2.5rem;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  .aa-footer {
+    padding: 2rem 3rem;
+    border-top: 0.5px solid rgba(232,228,220,0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .aa-footer-copy {
+    font-size: 12px;
+    color: rgba(232,228,220,0.3);
+    letter-spacing: 0.05em;
+  }
+
+  .aa-footer-links {
+    display: flex;
+    gap: 2rem;
+    font-size: 11px;
+    color: rgba(232,228,220,0.3);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .aa-divider {
+    height: 0.5px;
+    background: rgba(232,228,220,0.08);
+    margin: 0;
+  }
+
+  .aa-bank-logos {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+
+  .aa-bank-badge {
+    padding: 8px 18px;
+    border: 0.5px solid rgba(232,228,220,0.12);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(232,228,220,0.4);
+  }
+</style>
+
+<div class="aa-page">
+  <h2 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">Diseño de página de Corretaje Financiero — Alvarado Abreu Firma & Co.</h2>
+
+  <!-- NAV -->
+  <nav class="aa-nav">
+    <div class="aa-logo">Alvarado Abreu <span>Firma & Co.</span></div>
+    <ul class="aa-nav-links">
+      <li>Inicio</li>
+      <li>Servicios ▾</li>
+      <li class="active">Corretaje</li>
+      <li>Ley Concursal</li>
+      <li>Blog</li>
+    </ul>
+    <button class="aa-nav-cta">Auditoría Gratuita</button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="aa-hero">
+    <div>
+      <div class="aa-breadcrumb">Servicios — Corretaje Financiero</div>
+      <h1 class="aa-hero-title">En menos de 1 semana unificamos tus deudas en <em>1 sola cuota</em> con mejores condiciones</h1>
+      <div class="aa-hero-sub-tag">Garantizado o no pagas nada</div>
+      <p class="aa-hero-subtitle">No es una refundición común. Es un Lobby Bancario Directo que unifica el 100% de sus deudas con tasas exclusivas y sin burocracia.</p>
+      <button class="aa-cta-primary">Iniciar Auditoría Técnica hoy <span class="aa-cta-arrow">→</span></button>
+    </div>
+    <div class="aa-hero-right">
+      <div class="aa-video-placeholder">
+        <div class="aa-play-btn"></div>
+        <div class="aa-video-label">Ver cómo funciona el protocolo</div>
+      </div>
+      <div class="aa-hero-stat-row">
+        <div class="aa-stat">
+          <span class="aa-stat-num">100%</span>
+          <span class="aa-stat-label">Digital</span>
+        </div>
+        <div class="aa-stat">
+          <span class="aa-stat-num">&lt;7</span>
+          <span class="aa-stat-label">Días de gestión</span>
+        </div>
+        <div class="aa-stat">
+          <span class="aa-stat-num">$0</span>
+          <span class="aa-stat-label">Honorario si falla</span>
+        </div>
+        <div class="aa-stat">
+          <span class="aa-stat-num">4+</span>
+          <span class="aa-stat-label">Aliados bancarios</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="aa-section">
+    <div class="aa-problem">
+      <div class="aa-problem-left">
+        <div class="aa-section-label">El Problema</div>
+        <h2 class="aa-section-title">La trampa de la liquidez</h2>
+        <p class="aa-problem-body">¿Siente que trabaja solo para pagar deudas? El sistema financiero tradicional ofrece refinanciamientos que solo "patean" el problema. Las esperas de meses en sucursales terminan, muchas veces, en rechazos injustos.</p>
+        <div class="aa-bank-logos">
+          <div class="aa-bank-badge">BAC Credomatic</div>
+          <div class="aa-bank-badge">Davivienda</div>
+          <div class="aa-bank-badge">MBN</div>
+          <div class="aa-bank-badge">Coopealianza</div>
+        </div>
+      </div>
+      <div class="aa-problem-cards">
+        <div class="aa-problem-card">
+          <span class="aa-problem-card-num">01</span>
+          <div class="aa-problem-card-title">Tasas genéricas altísimas</div>
+          <p class="aa-problem-card-body">Los bancos ofrecen condiciones estándar de ventanilla que no reflejan su perfil real ni su historial completo.</p>
+        </div>
+        <div class="aa-problem-card">
+          <span class="aa-problem-card-num">02</span>
+          <div class="aa-problem-card-title">Esperas de meses</div>
+          <p class="aa-problem-card-body">Procesos lentos y burocráticos que agotan al solicitante sin garantía de aprobación al final del proceso.</p>
+        </div>
+        <div class="aa-problem-card">
+          <span class="aa-problem-card-num">03</span>
+          <div class="aa-problem-card-title">Rechazos injustos</div>
+          <p class="aa-problem-card-body">Expedientes mal armados por el propio banco resultan en negativas que podrían haberse evitado con la preparación correcta.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTION -->
+  <section class="aa-section aa-solution">
+    <div class="aa-section-label">La Solución</div>
+    <h2 class="aa-section-title">Nuestro Protocolo de Corretaje</h2>
+    <div class="aa-solution-grid">
+      <div class="aa-sol-card">
+        <div class="aa-sol-icon">L</div>
+        <div class="aa-sol-card-title">Lobby Bancario Directo</div>
+        <p class="aa-sol-card-body">Evitamos las filas. Analistas de crédito dedicados a nuestra firma revisan los expedientes que armamos, garantizando aprobaciones rápidas sin pasar por sucursales.</p>
+        <div class="aa-sol-tag">Exclusivo de la firma</div>
+      </div>
+      <div class="aa-sol-card">
+        <div class="aa-sol-icon">T</div>
+        <div class="aa-sol-card-title">Tasas Preferenciales</div>
+        <p class="aa-sol-card-body">Acceda a condiciones exclusivas gracias a nuestro volumen de casos y nuestras alianzas con BAC, Davivienda, MBN y Coopealianza. El despacho con más litigios bancarios de Costa Rica.</p>
+        <div class="aa-sol-tag">Alianzas estratégicas</div>
+      </div>
+      <div class="aa-sol-card">
+        <div class="aa-sol-icon">D</div>
+        <div class="aa-sol-card-title">100% Digital</div>
+        <p class="aa-sol-card-body">Gestionamos su caso a nivel nacional sin traslados ni salas de espera. Toda la gestión desde donde usted esté, con seguimiento en tiempo real.</p>
+        <div class="aa-sol-tag">Cobertura nacional</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="aa-section">
+    <div class="aa-process-inner">
+      <div class="aa-process-sticky">
+        <div class="aa-section-label">Nuestro Proceso</div>
+        <h2 class="aa-section-title">5 Pasos hacia la libertad financiera</h2>
+        <p class="aa-process-body">Un protocolo diseñado para eliminar la incertidumbre y maximizar las probabilidades de aprobación desde el primer contacto.</p>
+      </div>
+      <div class="aa-steps">
+        <div class="aa-step">
+          <div class="aa-step-num">01</div>
+          <div>
+            <div class="aa-step-content-title">Auditoría Técnica Gratuita</div>
+            <p class="aa-step-content-body">Revisión profunda de su historial y score crediticio (Equifax). Evaluamos su perfil para determinar el mejor camino sin costo inicial.</p>
+            <span class="aa-step-tag">Sin compromiso</span>
+          </div>
+        </div>
+        <div class="aa-step">
+          <div class="aa-step-num">02</div>
+          <div>
+            <div class="aa-step-content-title">Creación de Expediente</div>
+            <p class="aa-step-content-body">Recopilación digital de información estratégica. Armamos un expediente diseñado para el éxito, no para cumplir con un formulario.</p>
+            <span class="aa-step-tag">Proceso digital</span>
+          </div>
+        </div>
+        <div class="aa-step">
+          <div class="aa-step-num">03</div>
+          <div>
+            <div class="aa-step-content-title">Lobby Bancario</div>
+            <p class="aa-step-content-body">Presentamos y defendemos su caso directamente ante nuestro portafolio de aliados. Acceso al canal que no existe en ventanilla.</p>
+            <span class="aa-step-tag">Canal exclusivo</span>
+          </div>
+        </div>
+        <div class="aa-step">
+          <div class="aa-step-num">04</div>
+          <div>
+            <div class="aa-step-content-title">Aprobación y Firma</div>
+            <p class="aa-step-content-body">El crédito se visa bajo las condiciones negociadas por nosotros. Usted firma sabiendo exactamente qué está aceptando.</p>
+            <span class="aa-step-tag">Condiciones negociadas</span>
+          </div>
+        </div>
+        <div class="aa-step">
+          <div class="aa-step-num">05</div>
+          <div>
+            <div class="aa-step-content-title">Desembolso</div>
+            <p class="aa-step-content-body">El banco liquida a sus acreedores y usted empieza a respirar con una única cuota ajustada a su capacidad real de pago.</p>
+            <span class="aa-step-tag">Libertad financiera</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="aa-section aa-pricing">
+    <div class="aa-section-label">Inversión y Garantía</div>
+    <h2 class="aa-section-title">Estructura sin riesgo para usted</h2>
+    <div class="aa-pricing-grid">
+      <div class="aa-price-card featured">
+        <div class="aa-price-label">Apertura de Expediente</div>
+        <div class="aa-price-amount">$250</div>
+        <div class="aa-price-unit">Inversión inicial única</div>
+        <p class="aa-price-desc">Incluye el análisis de riesgo completo y el inicio del lobby bancario. Nuestro equipo dedica las primeras horas a construir su caso antes de presentarlo.</p>
+        <div class="aa-guarantee">
+          <div class="aa-guarantee-check"></div>
+          <span class="aa-guarantee-text">Si el banco rechaza su perfil, estos $250 se reembolsan en su totalidad. Sin preguntas.</span>
+        </div>
+      </div>
+      <div class="aa-price-card">
+        <div class="aa-price-label">Honorario de Éxito</div>
+        <div class="aa-price-amount">$0</div>
+        <div class="aa-price-unit">De su bolsillo hoy</div>
+        <p class="aa-price-desc">No necesita tocar sus ahorros. Estructuramos la operación para que el honorario sea financiado e integrado dentro de su nuevo crédito bancario.</p>
+        <div class="aa-guarantee">
+          <div class="aa-guarantee-check"></div>
+          <span class="aa-guarantee-text">El banco nos paga directamente. Usted solo se preocupa por su nueva cuota mensual.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="aa-section">
+    <div class="aa-section-label">Preguntas Frecuentes</div>
+    <h2 class="aa-section-title" style="text-align:center;">FAQ Corretaje Financiero</h2>
+    <div class="aa-faq-inner" id="faqList">
+      <div class="aa-faq-item open">
+        <div class="aa-faq-q" onclick="toggleFaq(this)">
+          ¿En qué se diferencia de una refundición tradicional?
+          <span class="aa-faq-icon">+</span>
+        </div>
+        <p class="aa-faq-a">No es una gestión de ventanilla; rediseñamos su estructura de pasivos mediante un canal exclusivo de la banca privada. Contamos con analistas de crédito dedicados que revisan los expedientes que nuestra firma arma, asegurando velocidad y omitiendo la burocracia de las sucursales.</p>
+      </div>
+      <div class="aa-faq-item">
+        <div class="aa-faq-q" onclick="toggleFaq(this)">
+          ¿Con qué bancos trabajan?
+          <span class="aa-faq-icon">+</span>
+        </div>
+        <p class="aa-faq-a">Nuestra red de aliados incluye instituciones como BAC Credomatic, Davivienda, MBN y Coopealianza. Esta red se traduce en tasas y condiciones que no están disponibles para el público general.</p>
+      </div>
+      <div class="aa-faq-item">
+        <div class="aa-faq-q" onclick="toggleFaq(this)">
+          ¿Qué pasa si el banco rechaza mi perfil?
+          <span class="aa-faq-icon">+</span>
+        </div>
+        <p class="aa-faq-a">La inversión inicial de $250 para la apertura del expediente se reembolsa en su totalidad si el banco llegara a rechazar el perfil. Es nuestra garantía de confianza.</p>
+      </div>
+      <div class="aa-faq-item">
+        <div class="aa-faq-q" onclick="toggleFaq(this)">
+          ¿Tengo que pagar los honorarios de éxito por adelantado?
+          <span class="aa-faq-icon">+</span>
+        </div>
+        <p class="aa-faq-a">No, el honorario de éxito se estructura para ser financiado e integrado dentro del mismo crédito bancario aprobado. El banco nos paga directamente y usted solo se preocupa por su nueva cuota mensual.</p>
+      </div>
+      <div class="aa-faq-item">
+        <div class="aa-faq-q" onclick="toggleFaq(this)">
+          ¿Puedo consolidar solo mis tarjetas y mantener mi hipoteca?
+          <span class="aa-faq-icon">+</span>
+        </div>
+        <p class="aa-faq-a">Sí, la unificación total es opcional. Puede refinanciar únicamente deudas de consumo (tarjetas y préstamos personales) y mantener sus créditos hipotecarios o prendarios actuales.</p>
+      </div>
+      <div class="aa-faq-item">
+        <div class="aa-faq-q" onclick="toggleFaq(this)">
+          ¿Tengo que desplazarme a alguna oficina?
+          <span class="aa-faq-icon">+</span>
+        </div>
+        <p class="aa-faq-a">No. Nuestra infraestructura es 100% digital, lo que nos permite gestionar su caso en todo el país sin traslados ni salas de espera. Todo se gestiona de forma remota con total seguridad.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section class="aa-cta-band">
+    <div class="aa-section-label">Comenzar</div>
+    <h2 class="aa-section-title">¿Listo para convertir sus deudas en <em style="font-style:italic;color:#b8974a;">una sola cuota</em>?</h2>
+    <p class="aa-cta-subtitle">La auditoría técnica es gratuita. En menos de 48 horas tendrá un diagnóstico claro de su situación y el protocolo que activaremos para resolverla.</p>
+    <button class="aa-cta-primary">Iniciar Auditoría Técnica hoy <span class="aa-cta-arrow">→</span></button>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="aa-footer">
+    <div class="aa-logo">Alvarado Abreu <span>Firma & Co.</span></div>
+    <div class="aa-footer-copy">© 2025 Alvarado Abreu Firma & Co. Todos los derechos reservados.</div>
+    <div class="aa-footer-links">
+      <span>Privacidad</span>
+      <span>Términos</span>
+      <span>Contacto</span>
+    </div>
+  </footer>
+</div>
+
+<script>
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.aa-faq-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+</script>
