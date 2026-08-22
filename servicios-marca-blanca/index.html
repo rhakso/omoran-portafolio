@@ -9,11 +9,83 @@
     <meta name="robots" content="noindex, nofollow"> <!-- NO INDEXAR -->
     <title>Servicios Marca Blanca - Oscar Moran</title>
 
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
     <!-- Bootstrap core CSS -->
     <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <link href="../assets/dist/css/custom.css" rel="stylesheet">
     <style>
+        /* ── Design tokens (consistency with Presencia Digital) ── */
+        :root {
+            --nav-bg:      rgba(33, 37, 41, 0.95);  /* Bootstrap bg-dark = #212529 */
+            --nav-border:  #343a40;
+            --nav-cyan:    #0dcaf0;                  /* Bootstrap info color */
+            --nav-cyan-xs: rgba(13, 202, 240, 0.06);
+            --nav-txt2:    #8b949e;
+            --nav-r:       8px;
+        }
+
+        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+
+        /* ── Sticky nav ── */
+        .site-nav {
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            background: var(--nav-bg);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-bottom: 1px solid var(--nav-border);
+            padding: 13px 0;
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font-size: .82rem;
+            font-weight: 500;
+            color: #e6edf3;
+            border: 1px solid var(--nav-border);
+            border-radius: var(--nav-r);
+            padding: 7px 13px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .btn-back:hover {
+            color: var(--nav-cyan);
+            border-color: var(--nav-cyan);
+            background: var(--nav-cyan-xs);
+        }
+
+        .nav-badges { display: flex; gap: 8px; }
+
+        .chip {
+            font-size: 12px;
+            line-height: 1em;
+            font-weight: 700;
+            letter-spacing: .08em;
+            text-transform: none;
+            padding: 4px 8px;
+            border-radius: 8px;
+            border: 1px solid;
+            display: inline-block;
+        }
+        .chip-cyan  { color: #212529; border-color: #0dcaf0; background: #0dcaf0; }
         html::-webkit-scrollbar {
             width: 16px;
             height: 16px;
@@ -138,26 +210,34 @@
             margin-bottom: 5px;
             display: inline-block;
         }
+
+        /* ── Force 1200px container parity with Presencia Digital ── */
+        .container {
+            max-width: 1200px !important;
+            padding-left: 24px !important;
+            padding-right: 24px !important;
+        }
     </style>
 </head>
 
 <body class="bg-dark dark-theme">
 
-    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-
-        <header class="container mb-5 mt-3">
-            <div class="d-flex justify-content-between align-items-center">
-                <a href="../index.html" class="btn btn-outline-secondary text-white border-secondary">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-arrow-left" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd"
-                            d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
-                    </svg>
-                    Volver al Inicio
-                </a>
-                <span class="badge bg-info text-dark">Servicios Marca Blanca</span>
+    <!-- Sticky nav (mismo estilo que Presencia Digital) -->
+    <nav class="site-nav">
+        <div class="nav-inner">
+            <a href="../index.html" class="btn-back">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+                </svg>
+                Volver al inicio
+            </a>
+            <div class="nav-badges">
+                <span class="chip chip-cyan">Servicios Marca Blanca</span>
             </div>
-        </header>
+        </div>
+    </nav>
+
+    <div class="cover-container d-flex w-100 h-100 py-3 mx-auto flex-column">
 
         <main>
 
@@ -202,7 +282,7 @@
                     </div>
                     <div class="col">
                         <div class="service-item">
-                            <h4>Otras Plataformas & Código</h4>
+                            <h4>Otras Plataformas &amp; Código</h4>
                             <div class="mt-3">
                                 <span class="badge-tech">Webflow</span>
                                 <span class="badge-tech">Squarespace</span>
@@ -224,7 +304,7 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <ul>
-                                        <li>Landing Pages & One Page</li>
+                                        <li>Landing Pages &amp; One Page</li>
                                         <li>Sitios Informativos</li>
                                         <li>Catálogos Online</li>
                                         <li>Portafolios</li>
@@ -423,3 +503,4 @@
 </body>
 
 </html>
+

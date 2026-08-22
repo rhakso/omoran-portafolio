@@ -1,0 +1,1213 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Presencia Digital – Sitio web profesional con hosting, dominio y mantenimiento incluido. Planes desde $25/mes.">
+    <meta name="author" content="Oscar Moran Trejo">
+    <meta name="robots" content="noindex, nofollow"> <!-- PRIVADA: cambiar cuando sea pública -->
+    <title>Presencia Digital – Oscar Moran Trejo</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        /* ============================================
+           TOKENS
+        ============================================ */
+        :root {
+            --bg:          #212529;   /* Bootstrap bg-dark — igual que servicios-marca-blanca */
+            --bg-2:        #1c2027;   /* sección alterna, ligeramente más oscura */
+            --bg-card:     #161d24;   /* igual que .dark-theme .card en marca blanca */
+            --bg-card-2:   #1a2128;
+            --border:      #2a3744;   /* igual que border de cards en marca blanca */
+            --border-lit:  #3d5068;
+
+            --cyan:        #0dcaf0;   /* Bootstrap info — igual que nav chip en marca blanca */
+            --cyan-soft:   rgba(13, 202, 240, 0.12);
+            --cyan-xsoft:  rgba(13, 202, 240, 0.06);
+            --green:       #00e5a0;
+            --amber:       #ffb347;
+
+            --txt:         #dce6f0;
+            --txt-2:       #8b949e;
+            --txt-3:       #5c636a;
+
+            --r-sm:   8px;
+            --r-md:   14px;
+            --r-lg:   20px;
+            --r-xl:   28px;
+
+            --ease: ease;
+            --t: transform 0.2s var(--ease), border-color 0.2s var(--ease), background 0.2s var(--ease), color 0.2s var(--ease);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html {
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: #1c2738 var(--bg);
+        }
+        html::-webkit-scrollbar { width: 7px; }
+        html::-webkit-scrollbar-thumb { background: #1c2738; border-radius: 8px; }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--txt);
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.7;
+        }
+
+        a { color: inherit; text-decoration: none; }
+        img { max-width: 100%; }
+
+        /* ============================================
+           LAYOUT HELPER
+        ============================================ */
+        .wrap {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ============================================
+           STICKY HEADER
+        ============================================ */
+        .site-nav {
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            background: rgba(33, 37, 41, 0.95);  /* Bootstrap #212529 — igual que marca blanca */
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-bottom: 1px solid var(--border);
+            padding: 13px 0;
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font-size: .82rem;
+            font-weight: 500;
+            color: #e6edf3;
+            border: 1px solid var(--border);
+            border-radius: var(--r-sm);
+            padding: 7px 13px;
+            transition: var(--t);
+        }
+        .btn-back:hover { color: var(--cyan); border-color: var(--cyan); background: var(--cyan-xsoft); }
+
+        .nav-badges { display: flex; gap: 8px; }
+
+        .chip {
+            font-size: 12px;
+            line-height: 1em;
+            font-weight: 700;
+            letter-spacing: .08em;
+            text-transform: none;
+            padding: 4px 8px;
+            border-radius: 8px;
+            border: 1px solid;
+        }
+        .chip-cyan  { color: #212529; border-color: #0dcaf0; background: #0dcaf0; }
+        .chip-green { color: var(--green); border-color: rgba(0,229,160,.3); background: rgba(0,229,160,.06); }
+
+        /* ============================================
+           HERO
+        ============================================ */
+        .hero {
+            padding: 88px 0 72px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -60px; left: 50%;
+            transform: translateX(-50%);
+            width: 700px; height: 350px;
+            background: radial-gradient(ellipse at 50% 30%, rgba(0,207,255,.07) 0%, transparent 65%);
+            pointer-events: none;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            font-size: .75rem;
+            font-weight: 700;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--cyan);
+            margin-bottom: 22px;
+        }
+        .eyebrow::before, .eyebrow::after {
+            content: '';
+            display: block;
+            width: 28px; height: 1px;
+            background: var(--cyan);
+            opacity: .45;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5.5vw, 3.4rem);
+            font-weight: 800;
+            line-height: 1.12;
+            letter-spacing: -.025em;
+            margin-bottom: 22px;
+        }
+
+        .grad {
+            background: linear-gradient(130deg, #00cfff 0%, #7fa8f5 55%, #b07bff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p.sub {
+            font-size: 1.05rem;
+            color: var(--txt-2);
+            max-width: 560px;
+            margin: 0 auto 44px;
+        }
+
+        /* Trust bar */
+        .trust-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .trust-chip {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            padding: 9px 17px;
+            font-size: .82rem;
+            font-weight: 500;
+            transition: var(--t);
+        }
+        .trust-chip:hover { border-color: var(--border-lit); background: var(--bg-card-2); }
+        .trust-chip .hi { font-weight: 800; color: var(--cyan); }
+        .trust-chip .dot {
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: var(--cyan);
+            box-shadow: 0 0 6px var(--cyan);
+            flex-shrink: 0;
+        }
+
+        /* ============================================
+           SECTION HELPERS
+        ============================================ */
+        section { padding: 72px 0; }
+
+        .sec-tag {
+            display: block;
+            font-size: .7rem;
+            font-weight: 700;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--cyan);
+            margin-bottom: 12px;
+        }
+
+        .sec-title {
+            font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+            font-weight: 800;
+            line-height: 1.18;
+            letter-spacing: -.02em;
+            margin-bottom: 14px;
+        }
+
+        .sec-desc {
+            font-size: .95rem;
+            color: var(--txt-2);
+            max-width: 600px;
+            line-height: 1.75;
+        }
+
+        hr.divider {
+            border: none;
+            border-top: 1px solid var(--border);
+        }
+
+        /* ============================================
+           PRICING CARDS
+        ============================================ */
+        .pricing-section { background: var(--bg-2); }
+
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 20px;
+            align-items: start;
+        }
+
+        .plan-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--r-xl);
+            padding: 32px 28px;
+            position: relative;
+            transition: var(--t);
+            display: flex;
+            flex-direction: column;
+        }
+        .plan-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--border-lit);
+            box-shadow: 0 12px 40px rgba(0,0,0,.45), 0 0 28px rgba(0,207,255,.07);
+        }
+
+        .plan-card.star {
+            border-color: rgba(0,207,255,.38);
+            background: linear-gradient(155deg, #0c1e2f 0%, var(--bg-card) 100%);
+            box-shadow: 0 8px 32px rgba(0,0,0,.4), 0 0 40px rgba(0,207,255,.09);
+        }
+        .plan-card.star:hover {
+            box-shadow: 0 14px 48px rgba(0,0,0,.5), 0 0 55px rgba(0,207,255,.18);
+        }
+
+        .star-badge {
+            position: absolute;
+            top: -13px; left: 50%; transform: translateX(-50%);
+            background: linear-gradient(90deg, #00cfff, #7fa8f5);
+            color: #060b11;
+            font-size: .67rem;
+            font-weight: 800;
+            letter-spacing: .09em;
+            text-transform: uppercase;
+            padding: 4px 18px;
+            border-radius: 100px;
+            white-space: nowrap;
+        }
+
+        .plan-label {
+            font-size: .75rem;
+            font-weight: 700;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            color: var(--txt-2);
+            margin-bottom: 10px;
+        }
+
+        .plan-price {
+            display: flex;
+            align-items: baseline;
+            gap: 5px;
+            margin-bottom: 4px;
+        }
+        .plan-price .sym  { font-size: 1.3rem; font-weight: 700; }
+        .plan-price .amt  {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: -.035em;
+        }
+        .plan-price .per  { font-size: .82rem; color: var(--txt-3); font-weight: 500; }
+
+        .plan-card.star .plan-price .sym,
+        .plan-card.star .plan-price .amt {
+            background: linear-gradient(135deg, #00cfff, #9ab5ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .plan-setup {
+            font-size: .78rem;
+            color: var(--txt-3);
+            margin-bottom: 22px;
+        }
+        .plan-setup strong { color: var(--txt-2); }
+
+        .plan-hr { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
+
+        .plan-blurb {
+            font-size: .83rem;
+            color: var(--txt-2);
+            line-height: 1.65;
+            margin-bottom: 22px;
+        }
+
+        .plan-feats {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 28px;
+            flex: 1;
+        }
+        .plan-feats li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: .83rem;
+            color: var(--txt-2);
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,.04);
+        }
+        .plan-feats li:last-child { border-bottom: none; }
+        .plan-feats li .chk {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 17px; height: 17px;
+            min-width: 17px;
+            border-radius: 50%;
+            background: var(--cyan-soft);
+            border: 1.5px solid var(--cyan);
+            margin-top: 1px;
+        }
+        .plan-feats li .chk svg { display: block; }
+
+        /* CTA button variants */
+        .btn-plan {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 13px 18px;
+            border-radius: var(--r-md);
+            font-size: .88rem;
+            font-weight: 700;
+            transition: var(--t);
+            line-height: 1.2;
+        }
+        .btn-outline-cyan {
+            border: 1.5px solid var(--border-lit);
+            color: var(--cyan);
+            background: transparent;
+        }
+        .btn-outline-cyan:hover {
+            background: var(--cyan-soft);
+            border-color: var(--cyan);
+            transform: translateY(-1px);
+        }
+        .btn-solid-cyan {
+            background: linear-gradient(135deg, #00cfff 0%, #7fa8f5 100%);
+            color: #060b11;
+            border: none;
+            box-shadow: 0 4px 18px rgba(0,207,255,.28);
+        }
+        .btn-solid-cyan:hover {
+            filter: brightness(1.1);
+            box-shadow: 0 6px 28px rgba(0,207,255,.45);
+            transform: translateY(-2px);
+        }
+
+        /* Inclusions banner */
+        .incl-banner {
+            margin-top: 40px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--r-lg);
+            padding: 28px 32px;
+        }
+        .incl-label {
+            font-size: .68rem;
+            font-weight: 700;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--cyan);
+            margin-bottom: 20px;
+        }
+        .incl-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+            gap: 14px;
+        }
+        .incl-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: .82rem;
+            color: var(--txt-2);
+        }
+        .incl-ico {
+            width: 32px; height: 32px;
+            border-radius: var(--r-sm);
+            background: var(--cyan-xsoft);
+            border: 1px solid rgba(0,207,255,.18);
+            display: flex; align-items: center; justify-content: center;
+            font-size: .95rem;
+            flex-shrink: 0;
+        }
+
+        /* ============================================
+           HOW IT WORKS
+        ============================================ */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            counter-reset: steps;
+        }
+
+        .step-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--r-lg);
+            padding: 28px 24px;
+            transition: var(--t);
+            counter-increment: steps;
+            position: relative;
+        }
+        .step-card:hover { border-color: var(--border-lit); transform: translateY(-5px); }
+
+        .step-num {
+            font-size: .68rem;
+            font-weight: 800;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--cyan);
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .step-num::before {
+            content: counter(steps, decimal-leading-zero);
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: rgba(0,207,255,.18);
+            letter-spacing: normal;
+        }
+
+        .step-card h4 {
+            font-size: .95rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .step-card p {
+            font-size: .82rem;
+            color: var(--txt-2);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* ============================================
+           FAQ
+        ============================================ */
+        .faq-section { background: var(--bg-2); }
+
+        .faq-list { max-width: 760px; }
+
+        .faq-item {
+            border: 1px solid var(--border);
+            border-radius: var(--r-md);
+            margin-bottom: 10px;
+            overflow: hidden;
+            transition: border-color .2s;
+        }
+        .faq-item.open { border-color: var(--border-lit); }
+
+        .faq-q {
+            width: 100%;
+            text-align: left;
+            background: var(--bg-card);
+            border: none;
+            padding: 18px 22px;
+            font-family: inherit;
+            font-size: .9rem;
+            font-weight: 600;
+            color: var(--txt);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            transition: background .18s;
+        }
+        .faq-q:hover { background: var(--bg-card-2); }
+
+        .faq-icon {
+            width: 22px; height: 22px;
+            border-radius: 50%;
+            border: 1.5px solid var(--border-lit);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--cyan);
+            flex-shrink: 0;
+            font-size: 1rem;
+            line-height: 1;
+            transition: transform .22s var(--ease), background .18s;
+        }
+        .faq-item.open .faq-icon { transform: rotate(45deg); background: var(--cyan-soft); }
+
+        .faq-body {
+            background: var(--bg-card);
+            padding: 0 22px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .3s var(--ease), padding .3s;
+        }
+        .faq-item.open .faq-body { padding-bottom: 20px; }
+
+        .faq-body p {
+            font-size: .87rem;
+            color: var(--txt-2);
+            line-height: 1.7;
+            margin: 0;
+        }
+        .faq-body p + p { margin-top: 8px; }
+
+        /* ============================================
+           TESTIMONIALS  (oculto por defecto)
+           Para activar: eliminar el atributo hidden
+           del elemento <section id="testimonios">
+        ============================================ */
+        #testimonios { background: var(--bg); }
+
+        .testi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .testi-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--r-lg);
+            padding: 28px 24px;
+            transition: var(--t);
+        }
+        .testi-card:hover { border-color: var(--border-lit); transform: translateY(-5px); }
+
+        .testi-stars {
+            color: var(--amber);
+            font-size: 1.05rem;
+            letter-spacing: 2px;
+            margin-bottom: 14px;
+        }
+
+        .testi-quote {
+            font-size: .88rem;
+            color: var(--txt-2);
+            line-height: 1.7;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .testi-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .testi-avatar {
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1c3a50, #1a2a3a);
+            border: 1.5px solid var(--border-lit);
+            display: flex; align-items: center; justify-content: center;
+            font-size: .9rem;
+            font-weight: 700;
+            color: var(--cyan);
+            flex-shrink: 0;
+        }
+        .testi-name  { font-size: .85rem; font-weight: 700; }
+        .testi-biz   { font-size: .75rem; color: var(--txt-3); }
+
+        /* ============================================
+           CTA FINAL
+        ============================================ */
+        .cta-section {
+            text-align: center;
+            background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 50%; transform: translateX(-50%);
+            width: 500px; height: 200px;
+            background: radial-gradient(ellipse at 50% 100%, rgba(0,207,255,.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .cta-section h2 {
+            font-size: clamp(1.6rem, 4vw, 2.5rem);
+            font-weight: 800;
+            letter-spacing: -.02em;
+            margin-bottom: 14px;
+        }
+        .cta-section p {
+            font-size: .97rem;
+            color: var(--txt-2);
+            max-width: 500px;
+            margin: 0 auto 38px;
+            line-height: 1.75;
+        }
+
+        .cta-btns {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .btn-wa {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            background: linear-gradient(135deg, #00cfff 0%, #7fa8f5 100%);
+            color: #060b11;
+            font-weight: 800;
+            font-size: .92rem;
+            padding: 14px 28px;
+            border-radius: var(--r-md);
+            transition: var(--t);
+            box-shadow: 0 4px 22px rgba(0,207,255,.28);
+        }
+        .btn-wa:hover { filter: brightness(1.1); box-shadow: 0 6px 32px rgba(0,207,255,.45); transform: translateY(-2px); }
+
+        .btn-email {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            background: transparent;
+            color: var(--txt-2);
+            font-weight: 600;
+            font-size: .92rem;
+            padding: 13px 24px;
+            border: 1.5px solid var(--border);
+            border-radius: var(--r-md);
+            transition: var(--t);
+        }
+        .btn-email:hover { border-color: var(--border-lit); color: var(--cyan); background: var(--cyan-xsoft); }
+
+        /* ============================================
+           FOOTER
+        ============================================ */
+        .site-footer {
+            background: var(--bg-2);
+            border-top: 1px solid var(--border);
+            padding: 28px 0;
+            text-align: center;
+        }
+        .site-footer p {
+            font-size: .78rem;
+            color: var(--txt-3);
+        }
+        .site-footer a { color: var(--cyan); }
+
+        /* ============================================
+           SCROLL REVEAL JS HELPER
+        ============================================ */
+        .reveal {
+            opacity: 0;
+            /* transition: opacity .55s var(--ease); -- eliminado para mejor fluidez */
+        }
+        .reveal.visible { opacity: 1; }
+
+        /* ============================================
+           RESPONSIVE
+        ============================================ */
+        @media (max-width: 600px) {
+            .hero { padding: 60px 0 52px; }
+            section { padding: 52px 0; }
+            .plan-price .amt { font-size: 2.6rem; }
+            .incl-banner { padding: 22px 18px; }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ================================================
+     NAVEGACIÓN
+================================================ -->
+<nav class="site-nav">
+    <div class="wrap">
+        <div class="nav-inner">
+            <a href="../index.html" class="btn-back">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+                </svg>
+                Volver al inicio
+            </a>
+            <div class="nav-badges">
+                <span class="chip chip-cyan">Presencia Digital</span>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- ================================================
+     HERO
+================================================ -->
+<section class="hero">
+    <div class="wrap">
+        <div class="eyebrow">Oscar Moran Trejo · Servicios Web</div>
+        <h1>
+            Tu negocio merece<br>
+            <span class="grad">una web que trabaje</span><br>
+            por ti.
+        </h1>
+        <p class="sub">
+            Sitio web profesional con dominio, hosting, mantenimiento y soporte incluidos.
+            Sin sorpresas, sin complicaciones técnicas. Tú enfócate en crecer.
+        </p>
+
+        <div class="trust-bar">
+            <div class="trust-chip"><span class="dot"></span><span><span class="hi">9+</span> años de experiencia</span></div>
+            <div class="trust-chip"><span class="dot"></span><span><span class="hi">200+</span> sitios entregados</span></div>
+            <div class="trust-chip"><span class="dot"></span><span>PageSpeed <span class="hi">90+</span> garantizado</span></div>
+            <div class="trust-chip"><span class="dot"></span><span>🇸🇻 El Salvador &amp; toda Latinoamérica</span></div>
+        </div>
+    </div>
+</section>
+
+<hr class="divider">
+
+<!-- ================================================
+     PRICING
+================================================ -->
+<section class="pricing-section" id="planes">
+    <div class="wrap">
+        <div style="margin-bottom:44px;">
+            <span class="sec-tag">📦 Planes de Suscripción</span>
+            <h2 class="sec-title">Elige el plan ideal<br>para tu negocio</h2>
+            <p class="sec-desc">
+                Un solo pago de activación y una cuota mensual fija que lo cubre todo:
+                hosting, dominio, SSL, mantenimiento y soporte. Sin contratos largos.
+            </p>
+        </div>
+
+        <div class="plans-grid">
+
+            <!-- PLAN ESENCIAL -->
+            <div class="plan-card reveal">
+                <p class="plan-label">Esencial</p>
+                <div class="plan-price">
+                    <span class="sym">$</span>
+                    <span class="amt">25</span>
+                    <span class="per">/ mes</span>
+                </div>
+                <p class="plan-setup">Activación inicial: <strong>$150 USD</strong> · Pago único</p>
+                <hr class="plan-hr">
+                <p class="plan-blurb">
+                    Ideal para profesionales independientes, emprendedores y negocios locales que
+                    necesitan una presencia web sólida y bien cuidada.
+                </p>
+                <ul class="plan-feats">
+                    <li><span class="chk"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1 3.5L3.2 5.8L8 1" stroke="#00cfff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Sitio de hasta 5 páginas (Kadence/Gutenberg)</li>
+                    <li><span class="chk"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1 3.5L3.2 5.8L8 1" stroke="#00cfff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Hosting de alta velocidad incluido</li>
+                    <li><span class="chk"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1 3.5L3.2 5.8L8 1" stroke="#00cfff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Dominio .com registrado (primer año)</li>
+                    <li><span class="chk"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1 3.5L3.2 5.8L8 1" stroke="#00cfff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>SSL / HTTPS activo</li>
+                    <li><span class="chk"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1 3.5L3.2 5.8L8 1" stroke="#00cfff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Respaldo semanal automático</li>
+                    <li><span class="chk"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1 3.5L3.2 5.8L8 1" stroke="#00cfff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Actualizaciones de WordPress + plugins</li>
+                    <li><span class="chk"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1 3.5L3.2 5.8L8 1" stroke="#00cfff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Soporte por WhatsApp (resp. en 48 h)</li>
+                    <li><span class="chk"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1 3.5L3.2 5.8L8 1" stroke="#00cfff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Formulario de contacto + Google Maps</li>
+                </ul>
+                <a href="https://wa.me/50370254004?text=Hola%20Oscar%2C%20me%20interesa%20el%20Plan%20Esencial%20de%20Presencia%20Digital"
+                   id="cta-plan-esencial"
+                   class="btn-plan btn-outline-cyan"
+                   target="_blank" rel="noopener">
+                    Empezar con Esencial →
+                </a>
+            </div>
+
+            <!-- PLAN PRO (destacado) -->
+            <div class="plan-card star reveal">
+                <span class="star-badge">⚡ Más Popular</span>
+                <p class="plan-label">Pro</p>
+                <div class="plan-price">
+                    <span class="sym">$</span>
+                    <span class="amt">45</span>
+                    <span class="per">/ mes</span>
+                </div>
+                <p class="plan-setup">Activación inicial: <strong>$200 – $250 USD</strong> · Pago único</p>
+                <hr class="plan-hr">
+                <p class="plan-blurb">
+                    Para negocios en crecimiento que quieren destacar en Google, con un diseño
+                    más elaborado y mayor velocidad de respuesta técnica.
+                </p>
+                <ul class="plan-feats">
+                    <li><span class="chk"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1 3.5L3.2 5.8L8 1" stroke="#00cfff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Todo lo del Plan Esencial</li>
+                    <li><span class="chk"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1 3.5L3.2 5.8L8 1" stroke="#00cfff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Hasta 10 páginas (diseño premium)</li>
+                    <li><span class="chk"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1 3.5L3.2 5.8L8 1" stroke="#00cfff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>SEO On-page + Schema Markup</li>
+                    <li><span class="chk"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1 3.5L3.2 5.8L8 1" stroke="#00cfff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Optimización PageSpeed 90+ (Core Web Vitals)</li>
+                    <li><span class="chk"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1 3.5L3.2 5.8L8 1" stroke="#00cfff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Blog corporativo configurado</li>
+                    <li><span class="chk"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1 3.5L3.2 5.8L8 1" stroke="#00cfff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Respaldo diario automático</li>
+                    <li><span class="chk"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1 3.5L3.2 5.8L8 1" stroke="#00cfff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Soporte prioritario (resp. en 24 h)</li>
+                    <li><span class="chk"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1 3.5L3.2 5.8L8 1" stroke="#00cfff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>1 revisión de diseño / mes incluida</li>
+                </ul>
+                <a href="https://wa.me/50370254004?text=Hola%20Oscar%2C%20me%20interesa%20el%20Plan%20Pro%20de%20Presencia%20Digital"
+                   id="cta-plan-pro"
+                   class="btn-plan btn-solid-cyan"
+                   target="_blank" rel="noopener">
+                    Empezar con Pro →
+                </a>
+            </div>
+
+            <!-- PLAN E-COMMERCE -->
+            <div class="plan-card reveal">
+                <p class="plan-label">E-commerce</p>
+                <div class="plan-price">
+                    <span class="sym">$</span>
+                    <span class="amt">75</span>
+                    <span class="per">/ mes</span>
+                </div>
+                <p class="plan-setup">Activación inicial: <strong>$300 – $350 USD</strong> · Pago único</p>
+                <hr class="plan-hr">
+                <p class="plan-blurb">
+                    Tiendas online que venden activamente y necesitan infraestructura confiable,
+                    gestión de pedidos y soporte urgente ante cualquier imprevisto.
+                </p>
+                <ul class="plan-feats">
+                    <li><span class="chk"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1 3.5L3.2 5.8L8 1" stroke="#00cfff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Todo lo del Plan Pro</li>
+                    <li><span class="chk"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1 3.5L3.2 5.8L8 1" stroke="#00cfff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>WooCommerce (hasta 100 productos)</li>
+                    <li><span class="chk"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1 3.5L3.2 5.8L8 1" stroke="#00cfff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Pasarela de pago local + PayPal / Stripe</li>
+                    <li><span class="chk"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1 3.5L3.2 5.8L8 1" stroke="#00cfff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Filtros y categorías avanzadas</li>
+                    <li><span class="chk"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1 3.5L3.2 5.8L8 1" stroke="#00cfff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Avisos de pedido y stock</li>
+                    <li><span class="chk"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1 3.5L3.2 5.8L8 1" stroke="#00cfff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Respaldo diario + monitor de disponibilidad</li>
+                    <li><span class="chk"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1 3.5L3.2 5.8L8 1" stroke="#00cfff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Soporte urgente (resp. en 8 h)</li>
+                    <li><span class="chk"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1 3.5L3.2 5.8L8 1" stroke="#00cfff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Reporte mensual de ventas y tráfico</li>
+                </ul>
+                <a href="https://wa.me/50370254004?text=Hola%20Oscar%2C%20me%20interesa%20el%20Plan%20E-commerce%20de%20Presencia%20Digital"
+                   id="cta-plan-ecommerce"
+                   class="btn-plan btn-outline-cyan"
+                   target="_blank" rel="noopener">
+                    Empezar con E-commerce →
+                </a>
+            </div>
+
+        </div><!-- /plans-grid -->
+
+        <!-- TODO incluido -->
+        <div class="incl-banner">
+            <p class="incl-label">✅ Todos los planes incluyen</p>
+            <div class="incl-grid">
+                <div class="incl-item"><span class="incl-ico">🚀</span>Hosting de alta velocidad</div>
+                <div class="incl-item"><span class="incl-ico">🌐</span>Dominio .com registrado</div>
+                <div class="incl-item"><span class="incl-ico">🔒</span>SSL / HTTPS activo</div>
+                <div class="incl-item"><span class="incl-ico">🛠️</span>Mantenimiento proactivo</div>
+                <div class="incl-item"><span class="incl-ico">💬</span>Soporte técnico incluido</div>
+                <div class="incl-item"><span class="incl-ico">💾</span>Respaldos automáticos</div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<hr class="divider">
+
+<!-- ================================================
+     CÓMO FUNCIONA
+================================================ -->
+<section id="como-funciona">
+    <div class="wrap">
+        <div style="margin-bottom:44px;">
+            <span class="sec-tag">🗺️ ¿Cómo funciona?</span>
+            <h2 class="sec-title">Listo en días, no en semanas</h2>
+            <p class="sec-desc">Un proceso claro, sin tecnicismos, desde la primera charla hasta tu web en línea.</p>
+        </div>
+
+        <div class="steps-grid">
+            <div class="step-card reveal">
+                <div class="step-num">Paso</div>
+                <h4>Conversamos</h4>
+                <p>Me cuentas de tu negocio, qué necesitas y qué te gustaría mostrar. Sin formularios largos: todo por WhatsApp o videollamada.</p>
+            </div>
+            <div class="step-card reveal">
+                <div class="step-num">Paso</div>
+                <h4>Propuesta y arranque</h4>
+                <p>Recibís una propuesta concreta con el plan recomendado. Confirmás, hacés el pago de activación y ¡arrancamos!</p>
+            </div>
+            <div class="step-card reveal">
+                <div class="step-num">Paso</div>
+                <h4>Diseño y revisión</h4>
+                <p>Construyo tu sitio y te lo comparto en un link privado para que lo revises. Ajustamos hasta que quedés 100% conforme.</p>
+            </div>
+            <div class="step-card reveal">
+                <div class="step-num">Paso</div>
+                <h4>Tu web, en línea</h4>
+                <p>Publicamos en tu dominio. Desde ahí, yo me encargo del mantenimiento mensual para que vos no tengas que preocuparte por nada técnico.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="divider">
+
+<!-- ================================================
+     FAQ
+================================================ -->
+<section class="faq-section" id="faq">
+    <div class="wrap">
+        <div style="margin-bottom:44px;">
+            <span class="sec-tag">❓ Preguntas frecuentes</span>
+            <h2 class="sec-title">Todo lo que querés saber</h2>
+            <p class="sec-desc">Si tenés una pregunta que no está acá, escribime por WhatsApp y con gusto te respondo.</p>
+        </div>
+
+        <div class="faq-list">
+
+            <div class="faq-item">
+                <button class="faq-q" aria-expanded="false" id="faq-q-1" aria-controls="faq-a-1">
+                    ¿Cuánto tiempo tarda en estar lista mi web?
+                    <span class="faq-icon" aria-hidden="true">+</span>
+                </button>
+                <div class="faq-body" id="faq-a-1" role="region" aria-labelledby="faq-q-1">
+                    <p>El tiempo depende de la complejidad del proyecto. Un sitio del Plan Esencial suele estar listo en <strong>5 a 7 días hábiles</strong> desde que me entregás los contenidos (textos e imágenes). Proyectos más elaborados (Pro o E-commerce) pueden tomar entre 2 y 3 semanas.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-q" aria-expanded="false" id="faq-q-2" aria-controls="faq-a-2">
+                    ¿El dominio y el hosting son míos?
+                    <span class="faq-icon" aria-hidden="true">+</span>
+                </button>
+                <div class="faq-body" id="faq-a-2" role="region" aria-labelledby="faq-q-2">
+                    <p>El dominio queda registrado a tu nombre y es completamente tuyo. El hosting está gestionado en mi infraestructura mientras estés suscrito al plan. Si en algún momento decidís migrar a tu propio servidor, te entrego los archivos completos del sitio sin problemas.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-q" aria-expanded="false" id="faq-q-3" aria-controls="faq-a-3">
+                    ¿Puedo cambiar de plan después?
+                    <span class="faq-icon" aria-hidden="true">+</span>
+                </button>
+                <div class="faq-body" id="faq-a-3" role="region" aria-labelledby="faq-q-3">
+                    <p>Sí, podés subir de plan en cualquier momento. Se ajusta la cuota mensual desde el próximo ciclo de facturación y se agregan las funciones del nuevo plan. No hay penalidades.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-q" aria-expanded="false" id="faq-q-4" aria-controls="faq-a-4">
+                    ¿Qué pasa si quiero cancelar?
+                    <span class="faq-icon" aria-hidden="true">+</span>
+                </button>
+                <div class="faq-body" id="faq-a-4" role="region" aria-labelledby="faq-q-4">
+                    <p>No hay contratos de permanencia. Si decidís cancelar, me avisás con al menos <strong>15 días de anticipación</strong>. Te entrego un respaldo completo del sitio para que puedas llevarlo a cualquier otro hosting si lo deseás.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-q" aria-expanded="false" id="faq-q-5" aria-controls="faq-a-5">
+                    ¿Puedo pedir cambios después de publicar el sitio?
+                    <span class="faq-icon" aria-hidden="true">+</span>
+                </button>
+                <div class="faq-body" id="faq-a-5" role="region" aria-labelledby="faq-q-5">
+                    <p>Sí. Cambios menores de contenido (actualizar texto, cambiar fotos, agregar un número de teléfono) están incluidos en la suscripción. Cambios de diseño o funcionalidades nuevas más elaboradas se cotizan por separado según el alcance.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-q" aria-expanded="false" id="faq-q-6" aria-controls="faq-a-6">
+                    ¿Trabajan con negocios fuera de El Salvador?
+                    <span class="faq-icon" aria-hidden="true">+</span>
+                </button>
+                <div class="faq-body" id="faq-a-6" role="region" aria-labelledby="faq-q-6">
+                    <p>Sí, trabajo con clientes de toda Latinoamérica. Todo el proceso es 100% remoto: nos comunicamos por WhatsApp o videollamada y los pagos se coordinan en USD. Sin importar el país, el servicio y la calidad son los mismos.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-q" aria-expanded="false" id="faq-q-7" aria-controls="faq-a-7">
+                    ¿Qué métodos de pago aceptan?
+                    <span class="faq-icon" aria-hidden="true">+</span>
+                </button>
+                <div class="faq-body" id="faq-a-7" role="region" aria-labelledby="faq-q-7">
+                    <p>Acepto transferencias bancarias, PayPal, tarjeta de crédito/débito y otros métodos según el país del cliente. Coordinamos la forma más cómoda para vos. Las cuotas mensuales se acuerdan al inicio.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-q" aria-expanded="false" id="faq-q-8" aria-controls="faq-a-8">
+                    ¿Mi sitio va a aparecer en Google?
+                    <span class="faq-icon" aria-hidden="true">+</span>
+                </button>
+                <div class="faq-body" id="faq-a-8" role="region" aria-labelledby="faq-q-8">
+                    <p>Todos los sitios se entregan con SEO básico (estructura, metaetiquetas, carga rápida). El Plan Pro y E-commerce incluyen SEO On-page más completo y configuración de Google Search Console para que Google indexe tu sitio correctamente. El posicionamiento orgánico toma tiempo, pero empezamos con el pie derecho desde el día uno.</p>
+                </div>
+            </div>
+
+        </div><!-- /faq-list -->
+    </div>
+</section>
+
+<hr class="divider">
+
+<!-- ================================================
+     TESTIMONIOS
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+     INSTRUCCIONES:
+     ✅ Para MOSTRAR esta sección: elimina el
+        atributo  hidden  de la etiqueta <section>
+     🔒 Para OCULTAR: vuelve a agregar hidden
+
+     Rellena cada tarjeta con los testimonios
+     reales de tus clientes. El avatar muestra
+     las iniciales del nombre automáticamente.
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+================================================ -->
+<section id="testimonios" hidden>
+    <div class="wrap">
+        <div style="margin-bottom:44px;">
+            <span class="sec-tag">💬 Lo que dicen nuestros clientes</span>
+            <h2 class="sec-title">Resultados reales,<br>negocios reales</h2>
+            <p class="sec-desc">Cada testimonio viene de un cliente real con quien trabajé directamente.</p>
+        </div>
+
+        <div class="testi-grid">
+
+            <!-- TESTIMONIO 1 — reemplaza el contenido con el real -->
+            <div class="testi-card reveal">
+                <div class="testi-stars">★★★★★</div>
+                <p class="testi-quote">
+                    "Quedé muy satisfecho con el trabajo. Oscar entendió desde el principio lo que
+                    necesitaba y el resultado superó mis expectativas. El sitio carga rápido y ya
+                    estamos recibiendo consultas por el formulario."
+                </p>
+                <div class="testi-author">
+                    <div class="testi-avatar">JM</div><!-- Cambia las iniciales -->
+                    <div>
+                        <p class="testi-name">Juan Martínez</p><!-- Nombre real del cliente -->
+                        <p class="testi-biz">Ferretería El Progreso · Guatemala</p><!-- Negocio y país -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- TESTIMONIO 2 -->
+            <div class="testi-card reveal">
+                <div class="testi-stars">★★★★★</div>
+                <p class="testi-quote">
+                    "Súper profesional y muy puntual. Mi tienda online quedó exactamente como la
+                    imaginé y el proceso fue muy sencillo. Lo recomiendo sin dudar."
+                </p>
+                <div class="testi-author">
+                    <div class="testi-avatar">AR</div>
+                    <div>
+                        <p class="testi-name">Ana Rodríguez</p>
+                        <p class="testi-biz">Tienda de Aromas · México</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TESTIMONIO 3 -->
+            <div class="testi-card reveal">
+                <div class="testi-stars">★★★★★</div>
+                <p class="testi-quote">
+                    "Llevaba tiempo buscando alguien confiable. El sitio quedó espectacular,
+                    mis clientes me preguntan quién me lo hizo. Y el soporte después de entregado
+                    ha sido excelente."
+                </p>
+                <div class="testi-author">
+                    <div class="testi-avatar">CP</div>
+                    <div>
+                        <p class="testi-name">Carlos Portillo</p>
+                        <p class="testi-biz">Consultoría Legal · El Salvador</p>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /testi-grid -->
+    </div>
+</section>
+
+<!-- ================================================
+     CTA FINAL
+================================================ -->
+<section class="cta-section">
+    <div class="wrap">
+        <h2>¿Listo para tener<br>tu presencia digital?</h2>
+        <p>
+            Escribime hoy y en menos de 24 horas tenés una propuesta
+            personalizada para tu negocio. Sin compromisos.
+        </p>
+        <div class="cta-btns">
+            <a href="https://wa.me/50370254004?text=Hola%20Oscar%2C%20me%20interesa%20el%20servicio%20de%20Presencia%20Digital%20para%20mi%20negocio"
+               id="cta-wa-final"
+               class="btn-wa"
+               target="_blank" rel="noopener">
+                💬 Escribir por WhatsApp
+            </a>
+            <a href="mailto:oscarmoran.trejo@gmail.com"
+               id="cta-email-final"
+               class="btn-email">
+                ✉️ Enviar por email
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ================================================
+     FOOTER
+================================================ -->
+<footer class="site-footer">
+    <div class="wrap">
+        <p>© 2026 <a href="https://oscarmorantrejo.com" target="_blank" rel="noopener">Oscar Moran Trejo</a> · Web Designer &amp; Developer · Santa Tecla, El Salvador</p>
+    </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+/* ================================================
+   FAQ ACCORDION
+================================================ */
+document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const item   = btn.closest('.faq-item');
+        const body   = btn.nextElementSibling;
+        const isOpen = item.classList.contains('open');
+
+        // Cerrar todos
+        document.querySelectorAll('.faq-item.open').forEach(i => {
+            i.classList.remove('open');
+            i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+            const b = i.querySelector('.faq-body');
+            b.style.maxHeight = '0';
+        });
+
+        // Abrir el clickeado (si estaba cerrado)
+        if (!isOpen) {
+            item.classList.add('open');
+            btn.setAttribute('aria-expanded', 'true');
+            body.style.maxHeight = body.scrollHeight + 'px';
+        }
+    });
+});
+
+/* ================================================
+   SCROLL REVEAL
+================================================ */
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+</script>
+
+</body>
+</html>
+
