@@ -167,3 +167,20 @@ a.btn-email:hover, a.btn-email:hover:before {
       padding: 0 5px;
       
   }*/
+
+html::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: #5C636A;
+  border-radius: 10px;
+  box-shadow: inset 2px 2px 2px hsla(0, 5%, 100%, .10), inset -2px -2px 2px rgba(0, 0, 0, .25);
+}
+
+html::-webkit-scrollbar-thumb:hover { background: #8b949e; }
+
+html::-webkit-scrollbar-track {
+  background: linear-gradient(90deg, #2a3744, #2a3744 1px, #161D24 0, #161D24);
+}

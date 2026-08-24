@@ -53,10 +53,12 @@
         html {
             scroll-behavior: smooth;
             scrollbar-width: thin;
-            scrollbar-color: #1c2738 var(--bg);
+            scrollbar-color: #5C636A #161D24;
         }
-        html::-webkit-scrollbar { width: 7px; }
-        html::-webkit-scrollbar-thumb { background: #1c2738; border-radius: 8px; }
+        html::-webkit-scrollbar { width: 10px; height: 10px; }
+        html::-webkit-scrollbar-thumb { background: #5C636A; border-radius: 10px; }
+        html::-webkit-scrollbar-thumb:hover { background: #8b949e; }
+        html::-webkit-scrollbar-track { background: linear-gradient(90deg, #2a3744, #2a3744 1px, #161D24 0, #161D24); }
 
         body {
             font-family: 'Inter', system-ui, sans-serif;
@@ -1145,7 +1147,7 @@
                target="_blank" rel="noopener">
                 💬 Escribir por WhatsApp
             </a>
-            <a href="mailto:oscarmoran.trejo@gmail.com"
+            <a href="mailto:hola@oscarmorantrejo.com"
                id="cta-email-final"
                class="btn-email">
                 ✉️ Enviar por email
@@ -1210,4 +1212,3 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
 </body>
 </html>
-
