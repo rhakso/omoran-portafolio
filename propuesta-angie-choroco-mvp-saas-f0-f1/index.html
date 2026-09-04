@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Propuesta técnica MVP Fase 0 y Fase 1 — SaaS Marketing de Moda">
+<meta name="author" content="Oscar Morán">
+<meta name="robots" content="noindex, nofollow">
+<title>Oscar Mor&aacute;n &mdash; Propuesta MVP Fase 0 y Fase 1</title><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"><style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:#e7e4f3;color:#475569;-webkit-font-smoothing:antialiased;}
+@page{size:Letter;margin:0;}
+.page{width:816px;min-height:1056px;margin:26px auto;background:#fff;box-shadow:0 10px 40px rgba(91,33,232,.16);position:relative;overflow:hidden;page-break-after:always;display:flex;flex-direction:column;}
+.page:last-child{page-break-after:auto;}
+@media print{ body{background:#fff;} .page{margin:0;box-shadow:none;} }
+@media (max-width:860px){
+  .page{width:100%;min-height:auto;margin:0;box-shadow:none;}
+  .phead,.pbody,.pfoot{padding-left:24px;padding-right:24px;}
+  .page[style*="padding:48px"] > div[style*="padding:0 56px"]{padding-left:24px!important;padding-right:24px!important;}
+  h1{font-size:clamp(32px,8vw,56px)!important;}
+  .pbody [style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;}
+  .grow{grid-template-columns:120px repeat(8,minmax(28px,1fr));}
+  .glabel{font-size:10px;padding:8px 6px;}
+}
+:root{--pp:#5B21E8;--pp2:#2563EB;--grn:#06FFA5;--ink:#0F0B2E;--body:#475569;--mut:#94A3B8;--line:#E5E7EB;}
+.gt{background:linear-gradient(135deg,#5B21E8,#2563EB);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.gx{background:linear-gradient(135deg,#A78BFA,#06FFA5);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.blob{position:absolute;border-radius:50%;filter:blur(110px);pointer-events:none;}
+.dot{position:absolute;inset:0;opacity:.05;background-image:radial-gradient(rgba(255,255,255,.8) 1px,transparent 1px);background-size:26px 26px;}
+.eyebrow{color:var(--pp);font-size:13px;font-weight:800;letter-spacing:3px;text-transform:uppercase;}
+h1{font-weight:900;letter-spacing:-1.5px;color:#fff;}
+h2{font-size:30px;font-weight:900;color:var(--ink);letter-spacing:-.5px;}
+h3{font-size:18px;font-weight:800;color:var(--ink);}
+p{font-size:14.5px;line-height:1.65;}
+.phead{display:flex;justify-content:space-between;align-items:center;padding:30px 56px 14px;border-bottom:2px solid var(--line);}
+.phead img{height:24px;} .phead .r{font-size:12px;color:var(--mut);font-weight:600;}
+.pbody{padding:30px 56px;flex:1;}
+.pfoot{padding:14px 56px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-size:11px;color:var(--mut);}
+table{width:100%;border-collapse:collapse;margin-top:6px;}
+th{background:var(--ink);color:#fff;font-size:12px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;padding:12px 16px;text-align:left;}
+td{padding:13px 16px;font-size:13.5px;border-bottom:1px solid var(--line);color:var(--ink);vertical-align:top;}
+tr:nth-child(even) td{background:#FAFAFE;}
+.cardbox{border:1px solid var(--line);border-radius:12px;padding:16px 18px;}
+.chip{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;padding:3px 10px;border-radius:999px;}
+.chip-pp{color:var(--pp);background:rgba(91,33,232,.08);border:1px solid rgba(91,33,232,.18);}
+.chip-grn{color:#067a52;background:rgba(6,255,165,.16);border:1px solid rgba(6,179,123,.3);}
+.chip-amb{color:#92600a;background:rgba(245,158,11,.14);border:1px solid rgba(245,158,11,.35);}
+.gantt{border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:8px;}
+.grow{display:grid;grid-template-columns:170px repeat(8,1fr);align-items:center;border-top:1px solid var(--line);}
+.grow:first-child{border-top:none;}
+.glabel{padding:11px 14px;font-size:12px;font-weight:700;color:var(--ink);border-right:1px solid var(--line);}
+.gcell{height:40px;border-right:1px solid #F1F0F8;position:relative;}
+.ghead{padding:10px 4px;font-size:10.5px;font-weight:800;color:var(--pp);text-align:center;border-right:1px solid #F1F0F8;text-transform:uppercase;}
+.bar{position:absolute;top:8px;bottom:8px;left:5px;right:5px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:700;color:#fff;}
+.bar-ext{opacity:.4;border:1px dashed rgba(255,255,255,.7);}
+.callout{border-left:3px solid var(--pp);background:#F7F6FF;border-radius:0 10px 10px 0;padding:14px 18px;}
+</style></head><body>
+
+<!-- PORTADA -->
+<div class="page" style="background:linear-gradient(135deg,#0D0818,#1E0A3C,#0F0B2E);">
+  <div class="dot"></div>
+  <div class="blob" style="width:420px;height:420px;background:#5B21E8;top:-140px;right:-110px;opacity:.5;"></div>
+  <div class="blob" style="width:360px;height:360px;background:#2563EB;bottom:-140px;left:-110px;opacity:.4;"></div>
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:48px 56px 0;position:relative;z-index:1;">
+    <span style="font-weight:900;font-size:22px;letter-spacing:.5px;color:#fff;">OSCAR MOR&Aacute;N</span><span style="color:rgba(255,255,255,.5);font-size:12px;">Angie Choroco</span></div>
+  <div style="padding:0 56px;position:relative;z-index:1;margin:auto 0;">
+    <div style="display:inline-block;background:rgba(6,255,165,.12);border:1px solid rgba(6,255,165,.3);border-radius:999px;padding:9px 24px;margin-bottom:30px;">
+      <span style="color:#06FFA5;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;">Propuesta técnica · MVP</span></div>
+    <h1 style="font-size:56px;line-height:1.05;">MVP Marketing de Moda<br><span class="gx">Fase 0 y Fase 1</span></h1>
+    <p style="font-size:20px;color:rgba(255,255,255,.6);margin-top:22px;max-width:600px;">Alcance, responsabilidades, costos y cronograma de las dos primeras etapas de desarrollo, antes de comprometernos con el resto del roadmap.</p>
+    <div style="display:flex;gap:12px;margin-top:34px;flex-wrap:wrap;">
+      <span style="border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:9px 20px;color:rgba(255,255,255,.8);font-size:14px;">Cliente: Angie Choroco</span>
+      <span style="border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:9px 20px;color:rgba(255,255,255,.8);font-size:14px;">Fecha: 4 sep. 2026</span>
+      <span style="border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:9px 20px;color:rgba(255,255,255,.8);font-size:14px;">Ref: MVP-F0F1</span></div></div>
+  <div style="padding:0 56px 48px;position:relative;z-index:1;display:flex;justify-content:space-between;">
+    <span style="color:rgba(255,255,255,.4);font-size:13px;">oscarmorantrejo.com</span>
+    <span style="color:rgba(255,255,255,.3);font-size:13px;">Confidencial</span></div>
+</div>
+
+<!-- PÁGINA 2 — RESUMEN EJECUTIVO -->
+<div class="page">
+  <div class="phead"><span class="gt" style="font-weight:900;font-size:15px;letter-spacing:.5px;">OSCAR MOR&Aacute;N</span><span class="r">Propuesta · Angie Choroco</span></div>
+  <div class="pbody">
+    <p class="eyebrow" style="margin-bottom:10px;">Resumen</p>
+    <h2 style="margin-bottom:14px;">Qué cubre esta propuesta</h2>
+    <p style="margin-bottom:18px;">Este documento detalla únicamente las <strong style="color:var(--ink);">dos primeras etapas</strong> del MVP — el Diagnóstico inicial (Fase 0) y el Plan Básico (Fase 1) — pensadas para validar el producto con marcas reales antes de invertir en las fases más avanzadas (Profesional y Avanzado). <strong style="color:var(--ink);">No es la propuesta del proyecto completo.</strong></p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0 26px;">
+      <div class="cardbox"><span class="chip chip-pp">Fase 0</span><h3 style="margin:10px 0 4px;">Diagnóstico inicial</h3><p style="color:var(--body);">Pago único, sin suscripción. Puerta de entrada para probar la herramienta.</p></div>
+      <div class="cardbox"><span class="chip chip-grn">Fase 1</span><h3 style="margin:10px 0 4px;">Plan Básico</h3><p style="color:var(--body);">Primera suscripción real, de uso recurrente.</p></div>
+    </div>
+    <p class="eyebrow" style="margin-bottom:10px;">Resumen comparativo</p>
+    <table><thead><tr><th style="width:16%;">Fase</th><th style="width:44%;">Objetivo</th><th style="width:20%;">Costo</th><th style="width:20%;">Tiempo est.</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Fase 0</strong></td><td>Que una marca pruebe la herramienta sin comprometerse a un plan.</td><td>€560</td><td>2–3 semanas</td></tr>
+      <tr><td><strong>Fase 1</strong></td><td>Que la marca use la herramienta de forma recurrente con su catálogo real.</td><td>€1,360</td><td>5–6 semanas</td></tr>
+    </tbody></table>
+    <div class="callout" style="margin-top:22px;">
+      <p style="color:var(--ink);"><strong>Cómo se lee este orden:</strong> Fase 0 valida que el motor de cálculo funciona y aporta valor real antes de construir todo el sistema de cuentas y suscripciones de Fase 1. Si Fase 0 no convence a las marcas, se ajusta antes de invertir en Fase 1.</p>
+    </div>
+  </div><div class="pfoot"><span>Oscar Mor&aacute;n &middot; Propuesta MVP</span><span>2 · Confidencial</span></div>
+</div>
+
+<!-- PÁGINA 3 — FASE 0 -->
+<div class="page">
+  <div class="phead"><span class="gt" style="font-weight:900;font-size:15px;letter-spacing:.5px;">OSCAR MOR&Aacute;N</span><span class="r">Propuesta · Angie Choroco</span></div>
+  <div class="pbody">
+    <p class="eyebrow" style="margin-bottom:10px;">Fase 0</p>
+    <h2 style="margin-bottom:14px;">Diagnóstico inicial <span style="color:var(--mut);font-weight:700;font-size:20px;">(pago único)</span></h2>
+    <p style="margin-bottom:18px;">Una marca puede probar la herramienta y obtener un análisis real de su negocio <strong style="color:var(--ink);">sin comprometerse a una suscripción</strong>. Es la puerta de entrada del producto y, al mismo tiempo, la forma más rápida de validar que el motor de cálculo funciona con datos reales antes de construir todo lo demás.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0 22px;">
+      <div class="cardbox"><h3 style="margin-bottom:6px;">Qué sube la marca</h3><p style="color:var(--body);">Un Excel (plantilla fija) o carga manual con su catálogo, costes de fabricación y ventas.</p></div>
+      <div class="cardbox"><h3 style="margin-bottom:6px;">Qué recibe</h3><p style="color:var(--body);">Un resultado en pantalla o PDF: márgenes, rentabilidad por producto, producto héroe y productos de bajo margen.</p></div>
+    </div>
+    <p class="eyebrow" style="margin-bottom:10px;">Alcance</p>
+    <table><thead><tr><th style="width:55%;">Incluye</th><th style="width:45%;">No incluye (queda para Fase 1)</th></tr></thead>
+    <tbody>
+      <tr><td>Plantilla Excel + validación de datos</td><td>Cuentas de usuario persistentes</td></tr>
+      <tr><td>Motor de cálculo de márgenes y rentabilidad</td><td>Base de datos ni historial</td></tr>
+      <tr><td>Vista de resultado / PDF descargable, con diseño UX/UI propio</td><td>Dashboard recurrente</td></tr>
+      <tr><td>Cobro único (pasarela de pago)</td><td>Recomendaciones con IA</td></tr>
+    </tbody></table>
+    <div class="callout" style="margin-top:18px;">
+      <p style="color:var(--ink);"><strong>Diseño incluido:</strong> la vista de resultado de Fase 0 la construyo directo con el UI Kit propio (la misma paleta y componentes que después uso en el dashboard de Fase 1), para que la primera impresión de la marca ya sea consistente con el producto completo. La validas dentro del mismo checkpoint de Fase 0 — al ser una pantalla simple, no requiere un paso de prototipo aparte como sí lo tiene el dashboard de Fase 1.</p>
+    </div>
+    <div style="display:flex;gap:14px;margin-top:26px;">
+      <div class="cardbox" style="flex:1;text-align:center;"><p class="eyebrow" style="margin-bottom:6px;">Costo</p><p style="font-size:26px;font-weight:900;color:var(--ink);">€560</p></div>
+      <div class="cardbox" style="flex:1;text-align:center;"><p class="eyebrow" style="margin-bottom:6px;">Tiempo</p><p style="font-size:26px;font-weight:900;color:var(--ink);">2–3 sem.</p></div>
+    </div>
+  </div><div class="pfoot"><span>Oscar Mor&aacute;n &middot; Propuesta MVP</span><span>3 · Confidencial</span></div>
+</div>
+
+<!-- PÁGINA 4 — FASE 1 -->
+<div class="page">
+  <div class="phead"><span class="gt" style="font-weight:900;font-size:15px;letter-spacing:.5px;">OSCAR MOR&Aacute;N</span><span class="r">Propuesta · Angie Choroco</span></div>
+  <div class="pbody">
+    <p class="eyebrow" style="margin-bottom:10px;">Fase 1</p>
+    <h2 style="margin-bottom:14px;">Plan Básico <span style="color:var(--mut);font-weight:700;font-size:20px;">(primera suscripción)</span></h2>
+    <p style="margin-bottom:18px;">La marca deja de usar la herramienta una sola vez y pasa a tener <strong style="color:var(--ink);">una cuenta propia</strong>: sube y actualiza su catálogo cuando quiera, y ve su rentabilidad, márgenes y productos más/menos rentables en un dashboard permanente.</p>
+    <p class="eyebrow" style="margin-bottom:10px;">Alcance</p>
+    <table><thead><tr><th style="width:34%;">Componente</th><th style="width:66%;">Qué resuelve</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Cuentas de usuario</strong></td><td>Cada marca tiene su propio acceso, con sus datos aislados de otras marcas.</td></tr>
+      <tr><td><strong>Base de datos completa</strong></td><td>Productos, ventas, costes y stock, actualizables en cualquier momento.</td></tr>
+      <tr><td><strong>Subida recurrente de Excel</strong></td><td>La marca actualiza su catálogo cuando quiera, con validación automática.</td></tr>
+      <tr><td><strong>Dashboard web</strong></td><td>Catálogo, márgenes y ranking de productos más/menos rentables, siempre visible.</td></tr>
+      <tr><td><strong>Seguridad de datos</strong></td><td>Aislamiento técnico entre marcas: nadie ve datos de otra cuenta.</td></tr>
+      <tr><td><strong>Cobro de suscripción</strong></td><td>Pago mensual/anual gestionado automáticamente (Stripe).</td></tr>
+    </tbody></table>
+    <div class="callout" style="margin-top:18px;">
+      <p style="color:var(--ink);"><strong>Paso de diseño (antes de programar el dashboard final):</strong> tú ya tienes el concepto del dashboard definido. Yo armo un primer prototipo visual usando el UI Kit propio ya existente (el mismo sistema de diseño de este documento), y tú lo validas directamente sobre ese prototipo. Recién después construyo el dashboard conectado a datos reales. Este paso está incluido en el tiempo y costo de Fase 1.</p>
+    </div>
+    <div style="display:flex;gap:14px;margin-top:22px;">
+      <div class="cardbox" style="flex:1;text-align:center;"><p class="eyebrow" style="margin-bottom:6px;">Costo</p><p style="font-size:26px;font-weight:900;color:var(--ink);">€1,360</p></div>
+      <div class="cardbox" style="flex:1;text-align:center;"><p class="eyebrow" style="margin-bottom:6px;">Tiempo</p><p style="font-size:26px;font-weight:900;color:var(--ink);">5–6 sem.</p></div>
+    </div>
+  </div><div class="pfoot"><span>Oscar Mor&aacute;n &middot; Propuesta MVP</span><span>4 · Confidencial</span></div>
+</div>
+
+<!-- PÁGINA 5 — RESPONSABILIDADES Y COSTOS -->
+<div class="page">
+  <div class="phead"><span class="gt" style="font-weight:900;font-size:15px;letter-spacing:.5px;">OSCAR MOR&Aacute;N</span><span class="r">Propuesta · Angie Choroco</span></div>
+  <div class="pbody">
+    <p class="eyebrow" style="margin-bottom:10px;">Responsabilidades</p>
+    <h2 style="margin-bottom:14px;">Quién aporta qué en estas dos fases</h2>
+    <table><thead><tr><th style="width:50%;">Tú aportas</th><th style="width:50%;">Yo aporto</th></tr></thead>
+    <tbody>
+      <tr><td>Variables/columnas exactas del Excel</td><td>Arquitectura técnica completa (Next.js, base de datos, hosting)</td></tr>
+      <tr><td>Fórmulas de cálculo (márgenes, rentabilidad)</td><td>Desarrollo del parser de Excel y validaciones</td></tr>
+      <tr><td>Reglas de negocio (ej. alertas de margen bajo)</td><td>Motor de cálculo, programado a partir de tus fórmulas</td></tr>
+      <tr><td>Concepto de la vista de resultado y del dashboard</td><td>Diseño UX/UI (con el UI Kit propio, en ambas fases) y desarrollo</td></tr>
+      <tr><td>Validación de cada entregable</td><td>Seguridad, cobros (Stripe) e infraestructura</td></tr>
+    </tbody></table>
+    <p class="eyebrow" style="margin:26px 0 10px;">Resumen de costos</p>
+    <table><thead><tr><th style="width:70%;">Fase</th><th style="width:30%;">Costo</th></tr></thead>
+    <tbody>
+      <tr><td>Fase 0 — Diagnóstico inicial</td><td>€560</td></tr>
+      <tr><td>Fase 1 — Plan Básico</td><td>€1,360</td></tr>
+      <tr><td><strong>Total (Fase 0 + Fase 1)</strong></td><td><strong>€1,920</strong></td></tr>
+    </tbody></table>
+    <div class="callout" style="margin-top:22px;">
+      <p style="color:var(--ink);">A esto se suma un costo de infraestructura (hosting, base de datos, pasarela de pago) de aproximadamente <strong>€0–14/mes</strong> mientras se valida el producto. Ese costo va a subir conforme haya marcas usando la herramienta de forma recurrente — el monto depende del volumen real de uso, así que todavía no te puedo dar una cifra exacta. Es un costo que paga el proyecto, no está incluido en el desarrollo.</p>
+    </div>
+  </div><div class="pfoot"><span>Oscar Mor&aacute;n &middot; Propuesta MVP</span><span>5 · Confidencial</span></div>
+</div>
+
+<!-- PÁGINA 6 — CRONOGRAMA + PENDIENTES + FIRMA -->
+<div class="page">
+  <div class="phead"><span class="gt" style="font-weight:900;font-size:15px;letter-spacing:.5px;">OSCAR MOR&Aacute;N</span><span class="r">Propuesta · Angie Choroco</span></div>
+  <div class="pbody">
+    <p class="eyebrow" style="margin-bottom:10px;">Cronograma</p>
+    <h2 style="margin-bottom:14px;">Plan de trabajo (rango estimado)</h2>
+    <p style="margin-bottom:10px;color:var(--body);"><span style="display:inline-block;width:10px;height:10px;border-radius:3px;background:#5B21E8;margin-right:6px;vertical-align:middle;"></span>Barra sólida = escenario base (extremo inferior del rango) &nbsp; <span style="display:inline-block;width:10px;height:10px;border-radius:3px;border:1px dashed #5B21E8;opacity:.7;margin-right:6px;vertical-align:middle;"></span>Franja punteada = margen posible hasta el extremo superior</p>
+    <div class="gantt">
+      <div class="grow" style="background:var(--ink);"><div class="glabel" style="color:#fff;border-right-color:rgba(255,255,255,.15);">Actividad</div>
+        <div class="ghead">Sem 1</div><div class="ghead">Sem 2</div><div class="ghead">Sem 3</div><div class="ghead">Sem 4</div><div class="ghead">Sem 5</div><div class="ghead">Sem 6</div><div class="ghead">Sem 7</div><div class="ghead">Sem 8</div></div>
+      <div class="grow"><div class="glabel">Fase 0 — Diagnóstico + UI</div><div class="gcell"><div class="bar" style="background:#06B87B;">F0</div></div><div class="gcell"><div class="bar" style="background:#06B87B;">F0</div></div><div class="gcell"><div class="bar bar-ext" style="background:#06B87B;">F0</div></div><div class="gcell"></div><div class="gcell"></div><div class="gcell"></div><div class="gcell"></div><div class="gcell"></div></div>
+      <div class="grow"><div class="glabel">Validación contigo</div><div class="gcell"></div><div class="gcell"><div class="bar" style="background:#F59E0B;">✓</div></div><div class="gcell"><div class="bar bar-ext" style="background:#F59E0B;">✓</div></div><div class="gcell"></div><div class="gcell"></div><div class="gcell"></div><div class="gcell"></div><div class="gcell"></div></div>
+      <div class="grow"><div class="glabel">Auth + base de datos</div><div class="gcell"></div><div class="gcell"></div><div class="gcell"><div class="bar" style="background:linear-gradient(135deg,#5B21E8,#2563EB);">F1</div></div><div class="gcell"><div class="bar bar-ext" style="background:linear-gradient(135deg,#5B21E8,#2563EB);left:6px;right:60%;">F1</div></div><div class="gcell"></div><div class="gcell"></div><div class="gcell"></div><div class="gcell"></div></div>
+      <div class="grow"><div class="glabel">Prototipo dashboard F1 + validación</div><div class="gcell"></div><div class="gcell"></div><div class="gcell"></div><div class="gcell"><div class="bar" style="background:#A78BFA;">UX</div></div><div class="gcell"><div class="bar bar-ext" style="background:#A78BFA;left:6px;right:60%;">UX</div></div><div class="gcell"></div><div class="gcell"></div><div class="gcell"></div></div>
+      <div class="grow"><div class="glabel">Motor de cálculo + dashboard</div><div class="gcell"></div><div class="gcell"></div><div class="gcell"></div><div class="gcell"></div><div class="gcell"><div class="bar" style="background:linear-gradient(135deg,#5B21E8,#2563EB);">F1</div></div><div class="gcell"><div class="bar" style="background:linear-gradient(135deg,#5B21E8,#2563EB);">F1</div></div><div class="gcell"><div class="bar bar-ext" style="background:linear-gradient(135deg,#5B21E8,#2563EB);left:6px;right:60%;">F1</div></div><div class="gcell"></div></div>
+      <div class="grow"><div class="glabel">Stripe, seguridad y entrega</div><div class="gcell"></div><div class="gcell"></div><div class="gcell"></div><div class="gcell"></div><div class="gcell"></div><div class="gcell"></div><div class="gcell"><div class="bar" style="background:#2563EB;">F1</div></div><div class="gcell"><div class="bar bar-ext" style="background:#2563EB;left:6px;right:60%;">F1</div></div></div>
+    </div>
+    <p style="font-size:12px;color:var(--mut);margin-top:8px;">Fase 0: 2 semanas (sólido) con posible extensión a 3 (punteado). Fase 1: 5 semanas (sólido, semanas 3–7); cada actividad de Fase 1 incluye su propio margen de holgura (punteado) — si todas se extienden a la vez, la fase completa podría tomar hasta 6 semanas. Si Fase 0 se extiende a su vez, Fase 1 arranca una semana después de lo mostrado. Supone que tus fórmulas y reglas de negocio están disponibles al inicio de cada fase.</p>
+
+    <p class="eyebrow" style="margin:26px 0 10px;">Antes de arrancar, esto es lo que necesito de tu parte</p>
+    <div class="cardbox">
+      <p style="margin-bottom:8px;">1. Variables/columnas exactas del Excel MVP (los campos que la marca va a subir).</p>
+      <p style="margin-bottom:8px;">2. Fórmulas de cálculo definidas, aunque sea en borrador.</p>
+      <p style="margin-bottom:8px;">3. Un ejemplo concreto de regla de negocio (ej. "si margen &lt; X% → alerta").</p>
+      <p>4. Si el resultado del diagnóstico de Fase 0 se guarda como lead o es totalmente efímero.</p>
+    </div>
+
+    <div style="display:flex;margin-top:56px;"><div style="width:340px;text-align:center;">
+      <div style="height:54px;border-bottom:2px solid var(--ink);"></div>
+      <p style="font-size:13px;color:var(--mut);margin-top:8px;">Oscar Mor&aacute;n &middot; Desarrollador / Encargado de proyecto &middot; oscarmorantrejo.com</p></div></div>
+  </div>
+  <div class="pfoot"><span>oscarmorantrejo.com &middot; hola@oscarmorantrejo.com</span><span>6 · Confidencial</span></div>
+</div>
+</body></html>
